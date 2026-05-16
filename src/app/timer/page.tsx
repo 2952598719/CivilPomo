@@ -83,7 +83,7 @@ export default function TimerPage() {
         )}
       </div>
 
-      <PomodoroTimer onWorkComplete={handleWorkComplete} />
+      <PomodoroTimer onWorkComplete={handleWorkComplete} canStart={!!currentNodeId} />
 
       <NodeSelector />
 

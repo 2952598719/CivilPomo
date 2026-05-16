@@ -20,9 +20,10 @@ const phaseLabels = {
 
 interface PomodoroTimerProps {
   onWorkComplete?: () => void;
+  canStart?: boolean;
 }
 
-export function PomodoroTimer({ onWorkComplete }: PomodoroTimerProps) {
+export function PomodoroTimer({ onWorkComplete, canStart = true }: PomodoroTimerProps) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
@@ -98,7 +99,7 @@ export function PomodoroTimer({ onWorkComplete }: PomodoroTimerProps) {
         </p>
         <div className="flex gap-3">
           {phase === "idle" && (
-            <Button onClick={handleStart} size="lg">
+            <Button onClick={handleStart} size="lg" disabled={!canStart}>
               开始专注
             </Button>
           )}
