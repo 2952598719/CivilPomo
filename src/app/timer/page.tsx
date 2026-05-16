@@ -6,6 +6,7 @@ import { useState, useCallback } from "react";
 import { NarrativeModal } from "@/components/game/narrative-modal";
 import { NodeSelector } from "@/components/game/node-selector";
 import { NodeProgress } from "@/components/game/node-progress";
+import { addNarrative } from "@/lib/storage";
 
 export default function TimerPage() {
   const { currentNodeId, completedPomodoros, tree, currentEraIndex } =
@@ -55,6 +56,9 @@ export default function TimerPage() {
 
   const handleNarrativeClose = () => {
     setShowNarrative(false);
+    if (currentNodeId && narrativeText) {
+      addNarrative(currentNodeId, narrativeText);
+    }
     useGameStore.getState().completePomodoro();
   };
 
