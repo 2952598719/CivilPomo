@@ -2,6 +2,7 @@
 
 import { PomodoroTimer } from "@/components/timer/pomodoro-timer";
 import { useGameStore } from "@/stores/game-store";
+import { useTimerStore } from "@/stores/timer-store";
 import { useState, useCallback, useEffect } from "react";
 import { NarrativeModal } from "@/components/game/narrative-modal";
 import { NodeSelector } from "@/components/game/node-selector";
@@ -59,8 +60,11 @@ export default function TimerPage() {
     generateNarrative().finally(() => setNarrativeLoading(false));
   }, [generateNarrative]);
 
-  const handleWorkComplete = useCallback((_pomodorosCompleted: number) => {
-    setShowNarrative(true);
+  useEffect(() => {
+    useTimerStore.getState().setOnWorkComplete(() => {
+      setShowNarrative(true);
+    });
+    return () => useTimerStore.getState().setOnWorkComplete(null);
   }, []);
 
   const handleNarrativeClose = () => {
@@ -104,7 +108,7 @@ export default function TimerPage() {
         )}
       </div>
 
-      <PomodoroTimer onStart={handleStart} onWorkComplete={handleWorkComplete} canStart={!!currentNodeId} />
+      <PomodoroTimer onStart={handleStart} canStart={!!currentNodeId} />
 
       <NodeSelector />
 

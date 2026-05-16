@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useCallback, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTimerStore } from "@/stores/timer-store";
-import { useGameStore } from "@/stores/game-store";
 import { Button } from "@/components/ui/button";
 
 function formatTime(seconds: number): string {
@@ -24,11 +23,10 @@ const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 
 interface PomodoroTimerProps {
   onStart?: () => void;
-  onWorkComplete?: (pomodorosCompleted: number) => void;
   canStart?: boolean;
 }
 
-export function PomodoroTimer({ onStart, onWorkComplete, canStart = true }: PomodoroTimerProps) {
+export function PomodoroTimer({ onStart, canStart = true }: PomodoroTimerProps) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
@@ -46,42 +44,7 @@ export function PomodoroTimer({ onStart, onWorkComplete, canStart = true }: Pomo
     completeBreak,
   } = useTimerStore();
 
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const onWorkCompleteRef = useRef(onWorkComplete);
-  onWorkCompleteRef.current = onWorkComplete;
-
-  const clearTimer = useCallback(() => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
-  }, []);
-
-  useEffect(() => {
-    if (phase === "running" || phase === "break") {
-      intervalRef.current = setInterval(() => {
-        const state = useTimerStore.getState();
-        state.tick();
-        if (useTimerStore.getState().secondsRemaining <= 0) {
-          clearTimer();
-          if (state.timerType === "work") {
-            const totalPomodoros = useGameStore.getState().totalPomodoros + 1;
-            state.completeWork(totalPomodoros);
-            onWorkCompleteRef.current?.(totalPomodoros);
-          } else {
-            state.completeBreak();
-          }
-        }
-      }, 1000);
-    } else {
-      clearTimer();
-    }
-    return clearTimer;
-  }, [phase, clearTimer]);
-
   const handleStart = () => { start(); onStart?.(); };
-  const handlePause = () => pause();
-  const handleResume = () => resume();
 
   const totalSeconds =
     phase === "break"
@@ -167,7 +130,7 @@ export function PomodoroTimer({ onStart, onWorkComplete, canStart = true }: Pomo
         )}
         {phase === "running" && (
           <>
-            <Button onClick={handlePause} variant="outline" size="lg">
+            <Button onClick={pause} variant="outline" size="lg">
               暂停
             </Button>
             <Button onClick={() => reset()} variant="ghost" size="lg">
@@ -177,7 +140,7 @@ export function PomodoroTimer({ onStart, onWorkComplete, canStart = true }: Pomo
         )}
         {phase === "paused" && (
           <>
-            <Button onClick={handleResume} size="lg">
+            <Button onClick={resume} size="lg">
               继续
             </Button>
             <Button onClick={() => reset()} variant="ghost" size="lg">
