@@ -42,6 +42,7 @@ export function PomodoroTimer({ onStart, onWorkComplete, canStart = true }: Pomo
     start,
     pause,
     resume,
+    reset,
     completeBreak,
   } = useTimerStore();
 
@@ -165,14 +166,24 @@ export function PomodoroTimer({ onStart, onWorkComplete, canStart = true }: Pomo
           </Button>
         )}
         {phase === "running" && (
-          <Button onClick={handlePause} variant="outline" size="lg">
-            暂停
-          </Button>
+          <>
+            <Button onClick={handlePause} variant="outline" size="lg">
+              暂停
+            </Button>
+            <Button onClick={() => reset()} variant="ghost" size="lg">
+              停止
+            </Button>
+          </>
         )}
         {phase === "paused" && (
-          <Button onClick={handleResume} size="lg">
-            继续
-          </Button>
+          <>
+            <Button onClick={handleResume} size="lg">
+              继续
+            </Button>
+            <Button onClick={() => reset()} variant="ghost" size="lg">
+              停止
+            </Button>
+          </>
         )}
         {phase === "break" && (
           <Button
