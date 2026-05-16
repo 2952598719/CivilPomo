@@ -54,8 +54,8 @@ export const useGameStore = create<GameState>((set, get) => {
 
       const nodeComplete = newCompleted >= nodeInfo.node.pomodorosRequired;
 
-      let newCompletedNodes = [...state.completedNodes];
-      let newCurrentNodeId = state.currentNodeId;
+      const newCompletedNodes = [...state.completedNodes];
+      let newCurrentNodeId: string | null = state.currentNodeId;
       let newEraIndex = state.currentEraIndex;
 
       if (nodeComplete) {
