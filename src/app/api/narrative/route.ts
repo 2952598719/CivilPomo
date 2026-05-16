@@ -42,11 +42,12 @@ export async function POST(request: NextRequest) {
 - 只输出叙事文本，不要其他内容`;
 
   try {
-    const response = await fetch(`${baseUrl}/v1/chat/completions`, {
+    const response = await fetch(`${baseUrl}/v1/messages`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${apiKey}`,
+        "x-api-key": apiKey,
+        "anthropic-version": "2023-06-01",
       },
       body: JSON.stringify({
         model: modelName,
@@ -65,7 +66,10 @@ export async function POST(request: NextRequest) {
     }
 
     const data = await response.json();
-    const narrative = data.choices?.[0]?.message?.content?.trim();
+    const textBlock = data.content?.find(
+      (b: { type: string }) => b.type === "text"
+    );
+    const narrative = textBlock?.text?.trim();
 
     if (!narrative) {
       return NextResponse.json(
