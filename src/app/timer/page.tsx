@@ -24,13 +24,9 @@ export default function TimerPage() {
 
   const currentEra = tree.eras[currentEraIndex];
 
-  const handleWorkComplete = useCallback(async (_pomodorosCompleted: number) => {
+  const generateNarrative = useCallback(async () => {
     if (!currentNode) return;
-    setNarrativeLoading(true);
-    setShowNarrative(true);
-
     const progress = useGameStore.getState().completedPomodoros + 1;
-
     const allNodes = tree.eras.flatMap((e) => e.nodes);
     const prereqDescriptions = currentNode.prerequisites
       .map((id) => allNodes.find((n) => n.id === id)?.description ?? "")
@@ -52,10 +48,19 @@ export default function TimerPage() {
       setNarrativeText(data.narrative ?? "（叙事生成失败）");
     } catch {
       setNarrativeText("（网络错误，无法生成叙事）");
-    } finally {
-      setNarrativeLoading(false);
     }
   }, [currentNode, tree]);
+
+  const handleStart = useCallback(() => {
+    setNarrativeText("");
+    setNarrativeLoading(true);
+    setShowNarrative(false);
+    generateNarrative().finally(() => setNarrativeLoading(false));
+  }, [generateNarrative]);
+
+  const handleWorkComplete = useCallback((_pomodorosCompleted: number) => {
+    setShowNarrative(true);
+  }, []);
 
   const handleNarrativeClose = () => {
     setShowNarrative(false);
@@ -98,7 +103,7 @@ export default function TimerPage() {
         )}
       </div>
 
-      <PomodoroTimer onWorkComplete={handleWorkComplete} canStart={!!currentNodeId} />
+      <PomodoroTimer onStart={handleStart} onWorkComplete={handleWorkComplete} canStart={!!currentNodeId} />
 
       <NodeSelector />
 

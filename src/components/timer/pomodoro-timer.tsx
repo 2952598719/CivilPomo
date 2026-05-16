@@ -20,11 +20,12 @@ const phaseLabels = {
 };
 
 interface PomodoroTimerProps {
+  onStart?: () => void;
   onWorkComplete?: (pomodorosCompleted: number) => void;
   canStart?: boolean;
 }
 
-export function PomodoroTimer({ onWorkComplete, canStart = true }: PomodoroTimerProps) {
+export function PomodoroTimer({ onStart, onWorkComplete, canStart = true }: PomodoroTimerProps) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
@@ -71,7 +72,7 @@ export function PomodoroTimer({ onWorkComplete, canStart = true }: PomodoroTimer
     return clearTimer;
   }, [phase, clearTimer]);
 
-  const handleStart = () => start();
+  const handleStart = () => { start(); onStart?.(); };
   const handlePause = () => pause();
   const handleResume = () => resume();
 
