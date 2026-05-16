@@ -2,23 +2,25 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { NavBar } from "@/components/layout/nav-bar";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
   title: "CivilPomo",
-  description: "A Pomodoro timer game with Civilization-style tech tree",
+  description: "番茄钟 × 文明科技树",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className={cn("font-sans", inter.variable)}>
+    <html lang="zh-CN" className={cn("font-sans", inter.variable)}>
       <body className="min-h-screen bg-background font-sans antialiased">
-        {children}
+        <NavBar />
+        <main className="mx-auto max-w-4xl p-4">{children}</main>
       </body>
     </html>
   );
