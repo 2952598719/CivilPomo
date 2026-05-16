@@ -10,7 +10,7 @@
           "id": "fire",
           "name": "火",
           "description": "你的族群学会了控制火焰。夜晚不再寒冷，生肉变成了熟食。",
-          "pomodorosRequired": 2,
+          "pomodorosRequired": 3,
           "prerequisites": [],
           "category": "technology",
           "color": "#e8590c"
@@ -37,8 +37,10 @@
           "id": "rope",
           "name": "绳索",
           "description": "你发现把植物纤维拧在一起会变得异常坚韧。绳索改变了一切——捆绑、陷阱、攀爬。",
-          "pomodorosRequired": 2,
-          "prerequisites": ["stone-tools"],
+          "pomodorosRequired": 3,
+          "prerequisites": [
+            "stone-tools"
+          ],
           "category": "technology",
           "color": "#a16207"
         },
@@ -47,7 +49,10 @@
           "name": "狩猎采集",
           "description": "石器和语言的结合让你的族群成为高效的猎手。围猎、设伏、追踪——你们开始主宰这片荒野。",
           "pomodorosRequired": 3,
-          "prerequisites": ["stone-tools", "language"],
+          "prerequisites": [
+            "stone-tools",
+            "language"
+          ],
           "category": "technology",
           "color": "#65a30d"
         },
@@ -55,8 +60,10 @@
           "id": "shelter",
           "name": "穴居",
           "description": "你找到了一处山洞，用火堆照亮了黑暗。岩壁挡住了风雨，这是你第一个家。",
-          "pomodorosRequired": 2,
-          "prerequisites": ["fire"],
+          "pomodorosRequired": 3,
+          "prerequisites": [
+            "fire"
+          ],
           "category": "technology",
           "color": "#78716c"
         },
@@ -65,7 +72,9 @@
           "name": "部落组织",
           "description": "语言让你们能商量事务、分配角色。一个猎手负责追踪，一个长者负责决策——部落成形了。",
           "pomodorosRequired": 3,
-          "prerequisites": ["language"],
+          "prerequisites": [
+            "language"
+          ],
           "category": "civic",
           "color": "#ca8a04"
         },
@@ -74,7 +83,9 @@
           "name": "原始信仰",
           "description": "雷电、洪水、日升日落——你的族群开始相信，这些背后有看不见的力量在操控。",
           "pomodorosRequired": 2,
-          "prerequisites": ["language"],
+          "prerequisites": [
+            "language"
+          ],
           "category": "humanities",
           "color": "#a855f7"
         },
@@ -83,7 +94,9 @@
           "name": "动物驯化",
           "description": "你把一只受伤的狼崽带回了洞穴。几代之后，它成了你最忠诚的伙伴。",
           "pomodorosRequired": 3,
-          "prerequisites": ["hunting"],
+          "prerequisites": [
+            "hunting"
+          ],
           "category": "technology",
           "color": "#d97706"
         },
@@ -92,7 +105,10 @@
           "name": "陶器",
           "description": "湿泥在火中变硬。你捏出了第一个容器，可以盛水和储存粮食了。",
           "pomodorosRequired": 3,
-          "prerequisites": ["fire", "shelter"],
+          "prerequisites": [
+            "fire",
+            "shelter"
+          ],
           "category": "technology",
           "color": "#ea580c"
         },
@@ -101,7 +117,10 @@
           "name": "图腾崇拜",
           "description": "部落选定了自己的守护者——鹰、熊、或蛇。图腾柱立在营地中央，凝聚着所有人的信念。",
           "pomodorosRequired": 2,
-          "prerequisites": ["tribal-organization", "primitive-beliefs"],
+          "prerequisites": [
+            "tribal-organization",
+            "primitive-beliefs"
+          ],
           "category": "humanities",
           "color": "#c026d3"
         },
@@ -109,8 +128,11 @@
           "id": "weaving",
           "name": "纺织",
           "description": "你把植物纤维交错编织，做出了粗糙的布片。从此，兽皮不再是唯一的遮体之物。",
-          "pomodorosRequired": 2,
-          "prerequisites": ["totemism", "rope"],
+          "pomodorosRequired": 3,
+          "prerequisites": [
+            "totemism",
+            "rope"
+          ],
           "category": "technology",
           "color": "#db2777"
         },
@@ -119,7 +141,9 @@
           "name": "洞穴壁画",
           "description": "你用赭石和动物脂肪在岩壁上画下了猎手和野兽。这是人类最早的叙事——用图像讲述故事。",
           "pomodorosRequired": 2,
-          "prerequisites": ["primitive-beliefs"],
+          "prerequisites": [
+            "primitive-beliefs"
+          ],
           "category": "humanities",
           "color": "#f59e0b"
         },
@@ -128,7 +152,10 @@
           "name": "渔猎",
           "description": "绳索让你编织出渔网，石器让你削尖了鱼叉。河流和湖泊成了取之不尽的粮仓。",
           "pomodorosRequired": 2,
-          "prerequisites": ["rope", "hunting"],
+          "prerequisites": [
+            "rope",
+            "hunting"
+          ],
           "category": "technology",
           "color": "#0891b2"
         },
@@ -137,7 +164,10 @@
           "name": "草药学",
           "description": "你注意到某种叶子能止血，某种根茎能退烧。族群开始积累关于植物的知识。",
           "pomodorosRequired": 3,
-          "prerequisites": ["hunting", "cave-painting"],
+          "prerequisites": [
+            "hunting",
+            "cave-painting"
+          ],
           "category": "technology",
           "color": "#16a34a"
         },
@@ -145,8 +175,11 @@
           "id": "burial",
           "name": "丧葬仪式",
           "description": "族人去世了，你没有把他丢弃。你挖了一个坑，放入他生前的物品，用土掩埋。对死亡的敬畏由此开始。",
-          "pomodorosRequired": 2,
-          "prerequisites": ["primitive-beliefs", "shelter"],
+          "pomodorosRequired": 3,
+          "prerequisites": [
+            "primitive-beliefs",
+            "shelter"
+          ],
           "category": "humanities",
           "color": "#6b21a8"
         },
@@ -154,8 +187,11 @@
           "id": "music",
           "name": "音乐",
           "description": "你用骨头敲击石板，发出了有节奏的声响。族人围坐在一起，随着节拍哼唱——这是最早的歌。",
-          "pomodorosRequired": 2,
-          "prerequisites": ["language", "cave-painting"],
+          "pomodorosRequired": 3,
+          "prerequisites": [
+            "language",
+            "cave-painting"
+          ],
           "category": "humanities",
           "color": "#e879f9"
         },
@@ -163,8 +199,11 @@
           "id": "primitive-trade",
           "name": "原始以物易物",
           "description": "邻近的部落带着你没有的东西来了。你用多余的兽皮换到了漂亮的贝壳。交换的本能被唤醒了。",
-          "pomodorosRequired": 2,
-          "prerequisites": ["tribal-organization", "rope"],
+          "pomodorosRequired": 3,
+          "prerequisites": [
+            "tribal-organization",
+            "rope"
+          ],
           "category": "civic",
           "color": "#f59e0b"
         }
@@ -206,7 +245,9 @@
           "name": "农业改良",
           "description": "轮子让犁地变得省力。你开始有计划地休耕、轮作，产量比以前高了许多。",
           "pomodorosRequired": 3,
-          "prerequisites": ["wheel"],
+          "prerequisites": [
+            "wheel"
+          ],
           "category": "technology",
           "color": "#16a34a"
         },
@@ -215,7 +256,10 @@
           "name": "帆船",
           "description": "你在船上竖起一块兽皮，风竟然推着船前进了。河流不再是障碍，而是道路。",
           "pomodorosRequired": 3,
-          "prerequisites": ["wheel", "writing"],
+          "prerequisites": [
+            "wheel",
+            "writing"
+          ],
           "category": "technology",
           "color": "#0284c7"
         },
@@ -224,7 +268,9 @@
           "name": "灌溉系统",
           "description": "你挖了一条沟渠，把河水引到田地里。干旱不再是灭顶之灾，庄稼有了稳定的水源。",
           "pomodorosRequired": 3,
-          "prerequisites": ["agriculture-improved"],
+          "prerequisites": [
+            "agriculture-improved"
+          ],
           "category": "technology",
           "color": "#0e7490"
         },
@@ -233,7 +279,10 @@
           "name": "历法",
           "description": "你记录了月亮的圆缺和季节的更替，发现了一个循环的规律。历法诞生了——播种和收割终于有了时间依据。",
           "pomodorosRequired": 3,
-          "prerequisites": ["writing", "agriculture-improved"],
+          "prerequisites": [
+            "writing",
+            "agriculture-improved"
+          ],
           "category": "humanities",
           "color": "#2563eb"
         },
@@ -241,8 +290,10 @@
           "id": "multiplication",
           "name": "乘法",
           "description": "文字让你能记录数字，但反复相加太慢了。你发现了一种更快的计算方法——乘法。",
-          "pomodorosRequired": 2,
-          "prerequisites": ["writing"],
+          "pomodorosRequired": 3,
+          "prerequisites": [
+            "writing"
+          ],
           "category": "technology",
           "color": "#4f46e5"
         },
@@ -251,7 +302,9 @@
           "name": "拱门",
           "description": "你发现把楔形石块排成弧形，中间的空隙竟然不会塌陷。拱门让建筑变得更宏伟。",
           "pomodorosRequired": 3,
-          "prerequisites": ["wheel"],
+          "prerequisites": [
+            "wheel"
+          ],
           "category": "technology",
           "color": "#78716c"
         },
@@ -260,7 +313,10 @@
           "name": "城墙",
           "description": "青铜工具让搬运巨石变得可行。你围绕聚落垒起了高墙，敌人再也无法轻易闯入。",
           "pomodorosRequired": 4,
-          "prerequisites": ["arch", "bronze-smelting"],
+          "prerequisites": [
+            "arch",
+            "bronze-smelting"
+          ],
           "category": "technology",
           "color": "#57534e"
         },
@@ -269,7 +325,10 @@
           "name": "贸易",
           "description": "帆船载着货物沿河而下，远方的城市用香料换你的青铜器。一条固定的贸易路线形成了。",
           "pomodorosRequired": 3,
-          "prerequisites": ["sailing", "writing"],
+          "prerequisites": [
+            "sailing",
+            "writing"
+          ],
           "category": "civic",
           "color": "#ca8a04"
         },
@@ -278,7 +337,10 @@
           "name": "城邦",
           "description": "城墙保护着越来越多人。商人、工匠、祭司——不同的人聚居在一起，一个城市诞生了。",
           "pomodorosRequired": 4,
-          "prerequisites": ["trade", "fortification"],
+          "prerequisites": [
+            "trade",
+            "fortification"
+          ],
           "category": "civic",
           "color": "#d97706"
         },
@@ -287,7 +349,10 @@
           "name": "法典",
           "description": "城市里人多了，纠纷也多了。你把规则刻在石柱上，让所有人都能看到——这就是法律。",
           "pomodorosRequired": 4,
-          "prerequisites": ["city-state", "writing"],
+          "prerequisites": [
+            "city-state",
+            "writing"
+          ],
           "category": "civic",
           "color": "#a16207"
         },
@@ -296,7 +361,9 @@
           "name": "神话史诗",
           "description": "吟游诗人在篝火旁讲述神明的故事——创世、洪水、英雄远征。这些故事成了族群共同的记忆。",
           "pomodorosRequired": 3,
-          "prerequisites": ["writing"],
+          "prerequisites": [
+            "writing"
+          ],
           "category": "humanities",
           "color": "#9333ea"
         },
@@ -305,7 +372,10 @@
           "name": "祭司阶层",
           "description": "神话赋予了祭司神圣的地位。他们主持仪式、解释天象、调解纷争——权力开始集中。",
           "pomodorosRequired": 3,
-          "prerequisites": ["mythology", "city-state"],
+          "prerequisites": [
+            "mythology",
+            "city-state"
+          ],
           "category": "humanities",
           "color": "#a855f7"
         },
@@ -314,7 +384,10 @@
           "name": "外交",
           "description": "城市之间不再只有战争。使者带着礼物出发，谈判、结盟、通婚——外交成为一门艺术。",
           "pomodorosRequired": 3,
-          "prerequisites": ["city-state", "law"],
+          "prerequisites": [
+            "city-state",
+            "law"
+          ],
           "category": "civic",
           "color": "#f59e0b"
         },
@@ -322,8 +395,11 @@
           "id": "dyeing",
           "name": "染色",
           "description": "贸易带来了远方的矿石和植物。你发现它们能把布料染成鲜艳的颜色——紫色成了王族的象征。",
-          "pomodorosRequired": 2,
-          "prerequisites": ["trade", "bronze-smelting"],
+          "pomodorosRequired": 3,
+          "prerequisites": [
+            "trade",
+            "bronze-smelting"
+          ],
           "category": "technology",
           "color": "#e11d48"
         },
@@ -331,8 +407,11 @@
           "id": "sculpture",
           "name": "雕塑",
           "description": "你用青铜铸出了第一座人像。它矗立在城市广场上，提醒所有人——这里有一位伟大的领袖。",
-          "pomodorosRequired": 2,
-          "prerequisites": ["arch", "mythology"],
+          "pomodorosRequired": 3,
+          "prerequisites": [
+            "arch",
+            "mythology"
+          ],
           "category": "humanities",
           "color": "#c084fc"
         }
@@ -374,7 +453,10 @@
           "name": "渡槽",
           "description": "你用石渠把山泉水引入城市。清澈的水流过街道，喷泉在广场上飞溅——城市不再缺水。",
           "pomodorosRequired": 3,
-          "prerequisites": ["roads", "iron-smelting"],
+          "prerequisites": [
+            "roads",
+            "iron-smelting"
+          ],
           "category": "technology",
           "color": "#0ea5e9"
         },
@@ -383,7 +465,9 @@
           "name": "混凝土",
           "description": "你把火山灰和石灰混合在一起，加水后它竟然凝固成了比石头还坚固的物质。",
           "pomodorosRequired": 3,
-          "prerequisites": ["iron-smelting"],
+          "prerequisites": [
+            "iron-smelting"
+          ],
           "category": "technology",
           "color": "#78716c"
         },
@@ -392,7 +476,9 @@
           "name": "弩",
           "description": "铁器让你能打造出精密的扳机机构。弩比弓更易瞄准，一个普通士兵也能射杀重甲骑士。",
           "pomodorosRequired": 3,
-          "prerequisites": ["iron-smelting"],
+          "prerequisites": [
+            "iron-smelting"
+          ],
           "category": "technology",
           "color": "#44403c"
         },
@@ -401,7 +487,10 @@
           "name": "攻城器械",
           "description": "弩和混凝土的结合催生了投石机和攻城塔。城墙再高，也有了被攻破的一天。",
           "pomodorosRequired": 4,
-          "prerequisites": ["crossbow", "concrete"],
+          "prerequisites": [
+            "crossbow",
+            "concrete"
+          ],
           "category": "technology",
           "color": "#57534e"
         },
@@ -410,7 +499,9 @@
           "name": "哲学",
           "description": "民主制度催生了自由的思辨。你开始追问：什么是正义？什么是美德？什么是好的生活？",
           "pomodorosRequired": 4,
-          "prerequisites": ["democracy"],
+          "prerequisites": [
+            "democracy"
+          ],
           "category": "humanities",
           "color": "#7c3aed"
         },
@@ -419,7 +510,9 @@
           "name": "戏剧",
           "description": "哲学家把对人性的思考搬上了舞台。观众在悲剧中落泪，在喜剧中大笑——戏剧诞生了。",
           "pomodorosRequired": 3,
-          "prerequisites": ["philosophy"],
+          "prerequisites": [
+            "philosophy"
+          ],
           "category": "humanities",
           "color": "#c026d3"
         },
@@ -428,7 +521,9 @@
           "name": "史诗文学",
           "description": "你把英雄的故事写成了长诗。它不再是口口相传的传说，而是可以被反复阅读的永恒文字。",
           "pomodorosRequired": 3,
-          "prerequisites": ["philosophy"],
+          "prerequisites": [
+            "philosophy"
+          ],
           "category": "humanities",
           "color": "#9333ea"
         },
@@ -437,7 +532,10 @@
           "name": "奥运会",
           "description": "城邦之间约定暂时停战，让最优秀的运动员在竞技场上一决高下。体育成了和平的纽带。",
           "pomodorosRequired": 3,
-          "prerequisites": ["democracy", "drama"],
+          "prerequisites": [
+            "democracy",
+            "drama"
+          ],
           "category": "civic",
           "color": "#f59e0b"
         },
@@ -445,8 +543,11 @@
           "id": "public-bath",
           "name": "公共浴场",
           "description": "渡槽送来了充足的水源。你在城市中央建起了宏伟的浴场——人们在这里沐浴、交谈、放松。",
-          "pomodorosRequired": 2,
-          "prerequisites": ["aqueduct", "concrete"],
+          "pomodorosRequired": 3,
+          "prerequisites": [
+            "aqueduct",
+            "concrete"
+          ],
           "category": "technology",
           "color": "#06b6d4"
         },
@@ -455,7 +556,10 @@
           "name": "图书馆",
           "description": "道路连接了远方的城市，也连接了知识。你把收集到的卷轴集中存放，建起了第一座图书馆。",
           "pomodorosRequired": 3,
-          "prerequisites": ["roads", "epic-literature"],
+          "prerequisites": [
+            "roads",
+            "epic-literature"
+          ],
           "category": "humanities",
           "color": "#2563eb"
         },
@@ -464,7 +568,10 @@
           "name": "医院",
           "description": "渡槽和图书馆的结合让你能系统地研究疾病。你建起了专门收治病人的场所——医院。",
           "pomodorosRequired": 3,
-          "prerequisites": ["aqueduct", "library"],
+          "prerequisites": [
+            "aqueduct",
+            "library"
+          ],
           "category": "civic",
           "color": "#16a34a"
         },
@@ -473,7 +580,10 @@
           "name": "历史学",
           "description": "你不再只记录当下的事件，开始追溯过去。年代记、编年史——历史学作为一门学科诞生了。",
           "pomodorosRequired": 3,
-          "prerequisites": ["library", "epic-literature"],
+          "prerequisites": [
+            "library",
+            "epic-literature"
+          ],
           "category": "humanities",
           "color": "#6d28d9"
         },
@@ -481,8 +591,11 @@
           "id": "census",
           "name": "人口普查",
           "description": "民主制度需要了解它的公民。你派人挨家挨户登记人口、财产和职业——国家第一次真正认识了自己。",
-          "pomodorosRequired": 2,
-          "prerequisites": ["roads", "democracy"],
+          "pomodorosRequired": 3,
+          "prerequisites": [
+            "roads",
+            "democracy"
+          ],
           "category": "civic",
           "color": "#a16207"
         }
@@ -523,8 +636,10 @@
           "id": "glasses",
           "name": "眼镜",
           "description": "你把磨制的透明石片放在眼前，模糊的世界突然变得清晰。学者们又能阅读了。",
-          "pomodorosRequired": 2,
-          "prerequisites": ["mechanical-clock"],
+          "pomodorosRequired": 3,
+          "prerequisites": [
+            "mechanical-clock"
+          ],
           "category": "technology",
           "color": "#0ea5e9"
         },
@@ -533,7 +648,9 @@
           "name": "风车",
           "description": "你把布帆装在木架上，风推动它们旋转，带动石磨研磨谷物。风成了免费的动力。",
           "pomodorosRequired": 3,
-          "prerequisites": ["mechanical-clock"],
+          "prerequisites": [
+            "mechanical-clock"
+          ],
           "category": "technology",
           "color": "#a3e635"
         },
@@ -542,7 +659,10 @@
           "name": "水力锻锤",
           "description": "河流推动水轮，水轮带动铁锤。锻造不再完全依赖人力，产量翻了好几倍。",
           "pomodorosRequired": 3,
-          "prerequisites": ["windmill", "stirrup"],
+          "prerequisites": [
+            "windmill",
+            "stirrup"
+          ],
           "category": "technology",
           "color": "#0284c7"
         },
@@ -551,7 +671,10 @@
           "name": "哥特式建筑",
           "description": "眼镜让你能精确研磨透镜，水力锻锤让你能加工石材。尖拱、飞扶壁、彩色玻璃窗——前所未有的高耸教堂拔地而起。",
           "pomodorosRequired": 4,
-          "prerequisites": ["glasses", "water-powered-hammer"],
+          "prerequisites": [
+            "glasses",
+            "water-powered-hammer"
+          ],
           "category": "technology",
           "color": "#78716c"
         },
@@ -569,7 +692,9 @@
           "name": "教会法",
           "description": "教会建立起自己的法律体系，管辖婚姻、遗产和道德。它与世俗法律并行，成为中世纪的第二套秩序。",
           "pomodorosRequired": 3,
-          "prerequisites": ["feudalism"],
+          "prerequisites": [
+            "feudalism"
+          ],
           "category": "civic",
           "color": "#ca8a04"
         },
@@ -578,7 +703,10 @@
           "name": "大学",
           "description": "教会法需要受过教育的神职人员。你召集学者聚在一起教学——第一所大学诞生了。",
           "pomodorosRequired": 4,
-          "prerequisites": ["feudalism", "canon-law"],
+          "prerequisites": [
+            "feudalism",
+            "canon-law"
+          ],
           "category": "humanities",
           "color": "#2563eb"
         },
@@ -587,7 +715,9 @@
           "name": "经院哲学",
           "description": "大学里的学者试图用理性来论证信仰。他们辩论、推理、著书——经院哲学成为中世纪思想的主流。",
           "pomodorosRequired": 3,
-          "prerequisites": ["university"],
+          "prerequisites": [
+            "university"
+          ],
           "category": "humanities",
           "color": "#7c3aed"
         },
@@ -596,7 +726,10 @@
           "name": "行会制度",
           "description": "工匠和商人组织起来，制定行业标准、保护成员利益。行会成了城市经济的支柱。",
           "pomodorosRequired": 3,
-          "prerequisites": ["feudalism", "canon-law"],
+          "prerequisites": [
+            "feudalism",
+            "canon-law"
+          ],
           "category": "civic",
           "color": "#d97706"
         },
@@ -605,7 +738,10 @@
           "name": "骑士精神",
           "description": "马镫赋予骑兵力量，封建制度赋予他们身份。骑士开始遵循一套荣誉准则——勇敢、忠诚、慷慨。",
           "pomodorosRequired": 3,
-          "prerequisites": ["feudalism", "stirrup"],
+          "prerequisites": [
+            "feudalism",
+            "stirrup"
+          ],
           "category": "humanities",
           "color": "#be123c"
         },
@@ -613,8 +749,11 @@
           "id": "monastery",
           "name": "修道院",
           "description": "远离尘嚣的修士们抄写古籍、种植草药、酿造美酒。修道院成了知识的避难所。",
-          "pomodorosRequired": 2,
-          "prerequisites": ["canon-law", "university"],
+          "pomodorosRequired": 3,
+          "prerequisites": [
+            "canon-law",
+            "university"
+          ],
           "category": "humanities",
           "color": "#6b21a8"
         },
@@ -623,7 +762,10 @@
           "name": "银行业",
           "description": "行会积累了大量财富，大学提供了计算技能。你开始接受存款、发放贷款——银行诞生了。",
           "pomodorosRequired": 3,
-          "prerequisites": ["guild-system", "university"],
+          "prerequisites": [
+            "guild-system",
+            "university"
+          ],
           "category": "civic",
           "color": "#eab308"
         }
@@ -656,7 +798,9 @@
           "name": "天文望远镜",
           "description": "你把两块透镜装在铜管两端，对准了夜空。月亮上有山脉，木星有卫星——宇宙比想象的大得多。",
           "pomodorosRequired": 3,
-          "prerequisites": ["printing-press"],
+          "prerequisites": [
+            "printing-press"
+          ],
           "category": "technology",
           "color": "#0ea5e9"
         },
@@ -665,7 +809,9 @@
           "name": "透视法",
           "description": "你发现远处的物体看起来更小，平行线会在远方汇聚。画布上第一次出现了深度。",
           "pomodorosRequired": 3,
-          "prerequisites": ["printing-press"],
+          "prerequisites": [
+            "printing-press"
+          ],
           "category": "humanities",
           "color": "#c026d3"
         },
@@ -674,7 +820,10 @@
           "name": "解剖学",
           "description": "印刷术让知识传播更快，透视法让你习惯观察。你开始解剖人体，绘制精确的器官图谱。",
           "pomodorosRequired": 3,
-          "prerequisites": ["printing-press", "perspective"],
+          "prerequisites": [
+            "printing-press",
+            "perspective"
+          ],
           "category": "technology",
           "color": "#dc2626"
         },
@@ -683,7 +832,9 @@
           "name": "人文主义",
           "description": "印刷术让古希腊罗马的典籍重见天日。你开始重新相信——人本身就是值得赞美的。",
           "pomodorosRequired": 4,
-          "prerequisites": ["printing-press"],
+          "prerequisites": [
+            "printing-press"
+          ],
           "category": "humanities",
           "color": "#9333ea"
         },
@@ -692,7 +843,10 @@
           "name": "文艺复兴艺术",
           "description": "透视法和人文主义的结合催生了前所未有的艺术。画家、雕塑家、建筑师——天才们竞相绽放。",
           "pomodorosRequired": 3,
-          "prerequisites": ["perspective", "humanism"],
+          "prerequisites": [
+            "perspective",
+            "humanism"
+          ],
           "category": "humanities",
           "color": "#e879f9"
         },
@@ -701,7 +855,10 @@
           "name": "大航海探索",
           "description": "航海术和望远镜给了你探索未知的勇气。船队驶向地平线——新大陆在等着被发现。",
           "pomodorosRequired": 4,
-          "prerequisites": ["navigation", "telescope"],
+          "prerequisites": [
+            "navigation",
+            "telescope"
+          ],
           "category": "civic",
           "color": "#0e7490"
         },
@@ -710,7 +867,10 @@
           "name": "科学方法",
           "description": "望远镜颠覆了天文学，解剖学颠覆了医学。你意识到——观察、假设、实验——这才是认识世界的正确方式。",
           "pomodorosRequired": 4,
-          "prerequisites": ["telescope", "anatomy"],
+          "prerequisites": [
+            "telescope",
+            "anatomy"
+          ],
           "category": "humanities",
           "color": "#2563eb"
         },
@@ -718,8 +878,11 @@
           "id": "opera",
           "name": "歌剧",
           "description": "人文主义者想复兴古希腊的戏剧。音乐、诗歌和舞台表演融为一体——歌剧诞生了。",
-          "pomodorosRequired": 2,
-          "prerequisites": ["renaissance-art", "humanism"],
+          "pomodorosRequired": 3,
+          "prerequisites": [
+            "renaissance-art",
+            "humanism"
+          ],
           "category": "humanities",
           "color": "#f472b6"
         },
@@ -728,7 +891,10 @@
           "name": "城市规划",
           "description": "文艺复兴的艺术家开始设计整座城市——广场、大道、公共建筑，一切都按几何比例排列。",
           "pomodorosRequired": 3,
-          "prerequisites": ["renaissance-art", "exploration"],
+          "prerequisites": [
+            "renaissance-art",
+            "exploration"
+          ],
           "category": "civic",
           "color": "#ca8a04"
         },
@@ -737,7 +903,10 @@
           "name": "复式记账法",
           "description": "大航海带来的贸易量让旧的记账方式不堪重负。你发明了借贷双方的平衡记法——账目从此清清楚楚。",
           "pomodorosRequired": 3,
-          "prerequisites": ["exploration", "humanism"],
+          "prerequisites": [
+            "exploration",
+            "humanism"
+          ],
           "category": "civic",
           "color": "#a16207"
         },
@@ -746,7 +915,10 @@
           "name": "外交体系",
           "description": "城市规划和复式记账催生了专业的外交官阶层。他们穿梭于各国之间，谈判、结盟、维持微妙的平衡。",
           "pomodorosRequired": 3,
-          "prerequisites": ["city-planning", "double-entry-bookkeeping"],
+          "prerequisites": [
+            "city-planning",
+            "double-entry-bookkeeping"
+          ],
           "category": "civic",
           "color": "#d97706"
         },
@@ -755,7 +927,10 @@
           "name": "马基雅维利主义",
           "description": "你观察了权力的游戏，写下了一本冷酷的指南——为了目的可以不择手段。政治从此与道德分离。",
           "pomodorosRequired": 3,
-          "prerequisites": ["city-planning", "humanism"],
+          "prerequisites": [
+            "city-planning",
+            "humanism"
+          ],
           "category": "civic",
           "color": "#57534e"
         },
@@ -764,7 +939,10 @@
           "name": "制图学",
           "description": "航海带回了远方海岸线的记录。你把它们绘制在地图上，投影、比例、图例——世界第一次被精确地描绘出来。",
           "pomodorosRequired": 3,
-          "prerequisites": ["navigation", "exploration"],
+          "prerequisites": [
+            "navigation",
+            "exploration"
+          ],
           "category": "technology",
           "color": "#0e7490"
         },
@@ -773,7 +951,10 @@
           "name": "现代银行",
           "description": "复式记账让账目透明，文艺复兴艺术带来了富有的赞助人。你建立了一家能汇兑、信贷、投资的现代银行。",
           "pomodorosRequired": 3,
-          "prerequisites": ["double-entry-bookkeeping", "renaissance-art"],
+          "prerequisites": [
+            "double-entry-bookkeeping",
+            "renaissance-art"
+          ],
           "category": "civic",
           "color": "#eab308"
         },
@@ -782,7 +963,10 @@
           "name": "古典文学复兴",
           "description": "人文主义者重新翻译了古希腊的诗篇和哲学著作。印刷术让它们流传到每一个角落——古典文学复活了。",
           "pomodorosRequired": 3,
-          "prerequisites": ["humanism", "printing-press"],
+          "prerequisites": [
+            "humanism",
+            "printing-press"
+          ],
           "category": "humanities",
           "color": "#7c3aed"
         }
@@ -823,8 +1007,10 @@
           "id": "gas-lighting",
           "name": "煤气灯",
           "description": "你把煤加热产生的气体通过管道输送到灯头，点燃后发出稳定的光芒。夜晚的城市第一次被照亮了。",
-          "pomodorosRequired": 2,
-          "prerequisites": ["steam-engine"],
+          "pomodorosRequired": 3,
+          "prerequisites": [
+            "steam-engine"
+          ],
           "category": "technology",
           "color": "#f59e0b"
         },
@@ -833,7 +1019,9 @@
           "name": "铁路",
           "description": "蒸汽机和铁轨的结合创造了一种前所未有的交通工具。蒸汽火车轰鸣着穿越原野——距离被压缩了。",
           "pomodorosRequired": 4,
-          "prerequisites": ["steam-engine"],
+          "prerequisites": [
+            "steam-engine"
+          ],
           "category": "technology",
           "color": "#57534e"
         },
@@ -842,7 +1030,9 @@
           "name": "电报",
           "description": "铁路需要远距离通信。你发现电信号可以通过电线瞬间传递——消息不再需要快马传递了。",
           "pomodorosRequired": 3,
-          "prerequisites": ["railway"],
+          "prerequisites": [
+            "railway"
+          ],
           "category": "technology",
           "color": "#2563eb"
         },
@@ -860,7 +1050,9 @@
           "name": "美国独立",
           "description": "经验主义的理念漂洋过海。殖民地的人民宣布——人人生而平等，政府的权力来自被统治者的同意。",
           "pomodorosRequired": 4,
-          "prerequisites": ["empiricism"],
+          "prerequisites": [
+            "empiricism"
+          ],
           "category": "civic",
           "color": "#1d4ed8"
         },
@@ -869,7 +1061,9 @@
           "name": "法国大革命",
           "description": "启蒙思想在旧大陆引发了风暴。巴士底狱被攻破，国王被推翻——自由、平等、博爱的口号响彻欧洲。",
           "pomodorosRequired": 4,
-          "prerequisites": ["empiricism"],
+          "prerequisites": [
+            "empiricism"
+          ],
           "category": "civic",
           "color": "#dc2626"
         },
@@ -878,7 +1072,10 @@
           "name": "资本主义",
           "description": "纺织机械创造了巨大的利润，美国独立保护了私有财产。你看到了一个以资本为核心的经济体系正在成形。",
           "pomodorosRequired": 3,
-          "prerequisites": ["american-revolution", "textile-machinery"],
+          "prerequisites": [
+            "american-revolution",
+            "textile-machinery"
+          ],
           "category": "civic",
           "color": "#ca8a04"
         },
@@ -887,7 +1084,10 @@
           "name": "浪漫主义",
           "description": "革命的激情和理性的冰冷催生了一种反叛。诗人和画家开始歌颂情感、自然和想象力。",
           "pomodorosRequired": 3,
-          "prerequisites": ["french-revolution", "empiricism"],
+          "prerequisites": [
+            "french-revolution",
+            "empiricism"
+          ],
           "category": "humanities",
           "color": "#e879f9"
         },
@@ -896,7 +1096,10 @@
           "name": "社会主义思潮",
           "description": "资本主义带来了财富，也带来了剥削。你开始思考——生产资料是否应该由全体劳动者共同拥有？",
           "pomodorosRequired": 3,
-          "prerequisites": ["capitalism", "french-revolution"],
+          "prerequisites": [
+            "capitalism",
+            "french-revolution"
+          ],
           "category": "civic",
           "color": "#be123c"
         },
@@ -905,7 +1108,10 @@
           "name": "民族主义",
           "description": "法国大革命和铁路的结合点燃了民族意识。人们开始认同——我们是同一个民族，应该有自己的国家。",
           "pomodorosRequired": 3,
-          "prerequisites": ["french-revolution", "railway"],
+          "prerequisites": [
+            "french-revolution",
+            "railway"
+          ],
           "category": "civic",
           "color": "#a16207"
         },
@@ -914,7 +1120,10 @@
           "name": "公共教育",
           "description": "民主制度需要有知识的公民，电报让远程教学成为可能。你建立了面向所有人的公共教育体系。",
           "pomodorosRequired": 3,
-          "prerequisites": ["american-revolution", "telegraph"],
+          "prerequisites": [
+            "american-revolution",
+            "telegraph"
+          ],
           "category": "civic",
           "color": "#2563eb"
         },
@@ -922,8 +1131,11 @@
           "id": "photography",
           "name": "摄影术",
           "description": "你发现某些化学物质见光会变色。你把镜头对准风景，按下快门——影像被永久地固定在了纸上。",
-          "pomodorosRequired": 2,
-          "prerequisites": ["gas-lighting", "telegraph"],
+          "pomodorosRequired": 3,
+          "prerequisites": [
+            "gas-lighting",
+            "telegraph"
+          ],
           "category": "technology",
           "color": "#64748b"
         },
@@ -931,8 +1143,11 @@
           "id": "journalism",
           "name": "新闻业",
           "description": "电报让消息传播飞快，公共教育让更多人能阅读。你创办了一份日报——新闻业诞生了。",
-          "pomodorosRequired": 2,
-          "prerequisites": ["telegraph", "public-education"],
+          "pomodorosRequired": 3,
+          "prerequisites": [
+            "telegraph",
+            "public-education"
+          ],
           "category": "humanities",
           "color": "#44403c"
         },
@@ -941,7 +1156,10 @@
           "name": "宪政制度",
           "description": "美国独立和法国大革命的经验汇聚成共识——国家需要一部根本大法来限制权力、保障权利。",
           "pomodorosRequired": 3,
-          "prerequisites": ["american-revolution", "french-revolution"],
+          "prerequisites": [
+            "american-revolution",
+            "french-revolution"
+          ],
           "category": "civic",
           "color": "#d97706"
         },
@@ -950,7 +1168,10 @@
           "name": "古典经济学",
           "description": "你观察了资本主义的运作，写下了一部系统性的论著——市场有看不见的手，供需决定价格。",
           "pomodorosRequired": 3,
-          "prerequisites": ["capitalism", "empiricism"],
+          "prerequisites": [
+            "capitalism",
+            "empiricism"
+          ],
           "category": "civic",
           "color": "#a16207"
         }
@@ -983,7 +1204,9 @@
           "name": "电话",
           "description": "你发现声音的振动可以转化为电信号，通过电线传输后再还原成声音。远隔千里的人终于能直接对话了。",
           "pomodorosRequired": 3,
-          "prerequisites": ["electricity"],
+          "prerequisites": [
+            "electricity"
+          ],
           "category": "technology",
           "color": "#2563eb"
         },
@@ -992,7 +1215,9 @@
           "name": "无线电",
           "description": "你发现电信号不需要电线也能传播。无线电波穿越空间，把消息送到世界的每一个角落。",
           "pomodorosRequired": 3,
-          "prerequisites": ["telephone"],
+          "prerequisites": [
+            "telephone"
+          ],
           "category": "technology",
           "color": "#0ea5e9"
         },
@@ -1001,7 +1226,9 @@
           "name": "飞机",
           "description": "内燃机提供了足够的动力，你把机翼设计成弧形以产生升力。人类第一次飞上了天空。",
           "pomodorosRequired": 4,
-          "prerequisites": ["internal-combustion-engine"],
+          "prerequisites": [
+            "internal-combustion-engine"
+          ],
           "category": "technology",
           "color": "#64748b"
         },
@@ -1010,7 +1237,9 @@
           "name": "汽车",
           "description": "内燃机装在四轮底盘上，配上方向盘和座椅。个人出行的方式被彻底改变了。",
           "pomodorosRequired": 3,
-          "prerequisites": ["internal-combustion-engine"],
+          "prerequisites": [
+            "internal-combustion-engine"
+          ],
           "category": "technology",
           "color": "#57534e"
         },
@@ -1019,7 +1248,9 @@
           "name": "炼钢",
           "description": "你改进了冶炼工艺，能大规模生产廉价的钢铁。钢轨、钢桥、摩天大楼——钢铁时代到来了。",
           "pomodorosRequired": 3,
-          "prerequisites": ["internal-combustion-engine"],
+          "prerequisites": [
+            "internal-combustion-engine"
+          ],
           "category": "technology",
           "color": "#78716c"
         },
@@ -1028,7 +1259,10 @@
           "name": "流水线生产",
           "description": "你把汽车的组装分解成一个个简单的步骤，每个工人只负责一项。产量暴增，价格暴跌。",
           "pomodorosRequired": 3,
-          "prerequisites": ["steel-production", "automobile"],
+          "prerequisites": [
+            "steel-production",
+            "automobile"
+          ],
           "category": "technology",
           "color": "#44403c"
         },
@@ -1046,7 +1280,10 @@
           "name": "工业民族主义",
           "description": "钢铁产量成了国家实力的象征。民族主义和工业化结合——每个国家都想成为工厂最多的强国。",
           "pomodorosRequired": 3,
-          "prerequisites": ["imperialism", "steel-production"],
+          "prerequisites": [
+            "imperialism",
+            "steel-production"
+          ],
           "category": "civic",
           "color": "#ca8a04"
         },
@@ -1055,7 +1292,10 @@
           "name": "社会主义运动",
           "description": "流水线上的工人每天工作十二个小时，却只拿到微薄的工资。工人们开始组织起来——要求八小时工作制。",
           "pomodorosRequired": 3,
-          "prerequisites": ["imperialism", "assembly-line"],
+          "prerequisites": [
+            "imperialism",
+            "assembly-line"
+          ],
           "category": "civic",
           "color": "#dc2626"
         },
@@ -1064,7 +1304,10 @@
           "name": "女权运动",
           "description": "工业民族主义宣扬人人平等，无线电让她们的声音传遍全国。女性开始要求——投票权、财产权、受教育权。",
           "pomodorosRequired": 3,
-          "prerequisites": ["industrial-nationalism", "radio"],
+          "prerequisites": [
+            "industrial-nationalism",
+            "radio"
+          ],
           "category": "civic",
           "color": "#db2777"
         },
@@ -1073,7 +1316,10 @@
           "name": "公共卫生",
           "description": "社会主义运动关注底层，电力让城市亮了起来。你建立了清洁供水、污水系统和疫苗接种计划。",
           "pomodorosRequired": 3,
-          "prerequisites": ["socialism-movement", "electricity"],
+          "prerequisites": [
+            "socialism-movement",
+            "electricity"
+          ],
           "category": "civic",
           "color": "#16a34a"
         },
@@ -1082,7 +1328,10 @@
           "name": "大众教育",
           "description": "无线电把知识送进千家万户，公共卫生降低了儿童死亡率。你建立了面向所有人的义务教育制度。",
           "pomodorosRequired": 3,
-          "prerequisites": ["radio", "public-health"],
+          "prerequisites": [
+            "radio",
+            "public-health"
+          ],
           "category": "civic",
           "color": "#2563eb"
         },
@@ -1091,7 +1340,10 @@
           "name": "工会",
           "description": "社会主义运动给了理念，流水线生产给了共同的苦难。工人们结成了工会——集体谈判的力量不可小觑。",
           "pomodorosRequired": 3,
-          "prerequisites": ["socialism-movement", "assembly-line"],
+          "prerequisites": [
+            "socialism-movement",
+            "assembly-line"
+          ],
           "category": "civic",
           "color": "#be123c"
         },
@@ -1099,8 +1351,11 @@
           "id": "impressionism",
           "name": "印象派",
           "description": "电力照亮了夜晚，飞机打开了视野。画家们走出画室，捕捉光线和色彩的瞬间变化。",
-          "pomodorosRequired": 2,
-          "prerequisites": ["electricity", "airplane"],
+          "pomodorosRequired": 3,
+          "prerequisites": [
+            "electricity",
+            "airplane"
+          ],
           "category": "humanities",
           "color": "#e879f9"
         },
@@ -1108,8 +1363,11 @@
           "id": "realism",
           "name": "现实主义文学",
           "description": "无线电把远方的苦难带到了眼前。作家们不再写英雄和神话，开始描写普通人的生活和社会的真相。",
-          "pomodorosRequired": 2,
-          "prerequisites": ["radio", "industrial-nationalism"],
+          "pomodorosRequired": 3,
+          "prerequisites": [
+            "radio",
+            "industrial-nationalism"
+          ],
           "category": "humanities",
           "color": "#7c3aed"
         },
@@ -1117,8 +1375,11 @@
           "id": "modern-olympics",
           "name": "现代奥运会",
           "description": "女权运动推动了平等，飞机让跨国旅行成为可能。你复兴了古希腊的奥运会——全世界的运动员同场竞技。",
-          "pomodorosRequired": 2,
-          "prerequisites": ["feminism", "airplane"],
+          "pomodorosRequired": 3,
+          "prerequisites": [
+            "feminism",
+            "airplane"
+          ],
           "category": "civic",
           "color": "#f59e0b"
         }
@@ -1151,7 +1412,9 @@
           "name": "互联网",
           "description": "你把分散的计算机用通信协议连接起来。它们可以互相发送数据——互联网诞生了。",
           "pomodorosRequired": 4,
-          "prerequisites": ["computer"],
+          "prerequisites": [
+            "computer"
+          ],
           "category": "technology",
           "color": "#0ea5e9"
         },
@@ -1178,7 +1441,9 @@
           "name": "喷气式发动机",
           "description": "你把空气吸入压缩后与燃料混合燃烧，高速喷出的气体产生巨大的推力。飞机突破了音速。",
           "pomodorosRequired": 3,
-          "prerequisites": ["nuclear-energy"],
+          "prerequisites": [
+            "nuclear-energy"
+          ],
           "category": "technology",
           "color": "#78716c"
         },
@@ -1187,7 +1452,10 @@
           "name": "火箭",
           "description": "核能提供了巨大的能量密度，喷气式发动机提供了推进技术。你把两者结合——火箭冲出了大气层。",
           "pomodorosRequired": 4,
-          "prerequisites": ["nuclear-energy", "jet-engine"],
+          "prerequisites": [
+            "nuclear-energy",
+            "jet-engine"
+          ],
           "category": "technology",
           "color": "#dc2626"
         },
@@ -1196,7 +1464,10 @@
           "name": "人造卫星",
           "description": "火箭把一颗金属球送入了环绕地球的轨道。它每九十分钟绕地球一圈，从太空中发回信号。",
           "pomodorosRequired": 3,
-          "prerequisites": ["rocket", "computer"],
+          "prerequisites": [
+            "rocket",
+            "computer"
+          ],
           "category": "technology",
           "color": "#0ea5e9"
         },
@@ -1205,7 +1476,10 @@
           "name": "太空探索",
           "description": "火箭和卫星证明了太空可以到达。你把人类送上了太空——宇航员从舷窗回望，第一次看到了蓝色的地球。",
           "pomodorosRequired": 4,
-          "prerequisites": ["rocket", "satellite"],
+          "prerequisites": [
+            "rocket",
+            "satellite"
+          ],
           "category": "civic",
           "color": "#1e3a5f"
         },
@@ -1214,7 +1488,9 @@
           "name": "联合国",
           "description": "电视把战争的残酷带到了每个人的客厅。全世界开始坐到一起——联合国成立了，目标是避免第三次世界大战。",
           "pomodorosRequired": 3,
-          "prerequisites": ["television"],
+          "prerequisites": [
+            "television"
+          ],
           "category": "civic",
           "color": "#2563eb"
         },
@@ -1223,7 +1499,10 @@
           "name": "冷战",
           "description": "核能让两个超级大国都拥有了毁灭世界的能力。谁也不敢先动手——恐怖平衡维持着脆弱的和平。",
           "pomodorosRequired": 3,
-          "prerequisites": ["nuclear-energy", "united-nations"],
+          "prerequisites": [
+            "nuclear-energy",
+            "united-nations"
+          ],
           "category": "civic",
           "color": "#57534e"
         },
@@ -1232,7 +1511,10 @@
           "name": "民权运动",
           "description": "电视把不公展示给了全世界，联合国倡导人权。受压迫的人们走上街头——我们要求平等的权利。",
           "pomodorosRequired": 3,
-          "prerequisites": ["television", "united-nations"],
+          "prerequisites": [
+            "television",
+            "united-nations"
+          ],
           "category": "civic",
           "color": "#ca8a04"
         },
@@ -1241,7 +1523,10 @@
           "name": "消费主义",
           "description": "电视广告刺激着欲望，互联网让购物变得触手可及。拥有更多、消费更多——成了新的生活方式。",
           "pomodorosRequired": 3,
-          "prerequisites": ["television", "internet"],
+          "prerequisites": [
+            "television",
+            "internet"
+          ],
           "category": "civic",
           "color": "#d97706"
         },
@@ -1250,7 +1535,10 @@
           "name": "环保运动",
           "description": "民权运动让人们开始关注权利，太空探索让人们看到了地球的脆弱。从太空中看——地球只有一个。",
           "pomodorosRequired": 3,
-          "prerequisites": ["civil-rights", "space-exploration"],
+          "prerequisites": [
+            "civil-rights",
+            "space-exploration"
+          ],
           "category": "civic",
           "color": "#16a34a"
         },
@@ -1259,7 +1547,9 @@
           "name": "编程语言",
           "description": "计算机需要指令才能工作。你发明了一种接近人类语言的方式来编写指令——编程语言诞生了。",
           "pomodorosRequired": 3,
-          "prerequisites": ["computer"],
+          "prerequisites": [
+            "computer"
+          ],
           "category": "technology",
           "color": "#4f46e5"
         },
@@ -1268,7 +1558,10 @@
           "name": "移动通信",
           "description": "互联网和卫星的结合让你能随时随地发送信息。手机不再只是电话——它是你通向世界的窗口。",
           "pomodorosRequired": 3,
-          "prerequisites": ["internet", "satellite"],
+          "prerequisites": [
+            "internet",
+            "satellite"
+          ],
           "category": "technology",
           "color": "#06b6d4"
         },
@@ -1276,8 +1569,11 @@
           "id": "digital-art",
           "name": "数字艺术",
           "description": "互联网提供了平台，编程提供了工具。艺术家开始用代码和像素创作——数字艺术诞生了。",
-          "pomodorosRequired": 2,
-          "prerequisites": ["internet", "programming"],
+          "pomodorosRequired": 3,
+          "prerequisites": [
+            "internet",
+            "programming"
+          ],
           "category": "humanities",
           "color": "#c026d3"
         },
@@ -1286,7 +1582,10 @@
           "name": "全球化",
           "description": "互联网让信息瞬间穿越国界，消费主义创造了全球市场。世界变平了——任何地方发生的事件都会影响所有人。",
           "pomodorosRequired": 3,
-          "prerequisites": ["internet", "consumerism"],
+          "prerequisites": [
+            "internet",
+            "consumerism"
+          ],
           "category": "civic",
           "color": "#eab308"
         }
@@ -1328,7 +1627,9 @@
           "name": "脑机接口",
           "description": "你把微型电极植入大脑皮层，计算机能读取神经信号，也能向大脑发送信息。思维和机器之间的屏障消失了。",
           "pomodorosRequired": 4,
-          "prerequisites": ["artificial-intelligence"],
+          "prerequisites": [
+            "artificial-intelligence"
+          ],
           "category": "technology",
           "color": "#db2777"
         },
@@ -1337,7 +1638,10 @@
           "name": "太空电梯",
           "description": "量子计算让你找到了超强材料，核聚变提供了动力。你从赤道直直地向太空伸出一条缆绳——电梯通往轨道。",
           "pomodorosRequired": 4,
-          "prerequisites": ["quantum-computing", "nuclear-fusion"],
+          "prerequisites": [
+            "quantum-computing",
+            "nuclear-fusion"
+          ],
           "category": "technology",
           "color": "#0ea5e9"
         },
@@ -1346,7 +1650,9 @@
           "name": "火星殖民",
           "description": "太空电梯让进入轨道变得廉价。第一批殖民者踏上了火星的红色土壤——人类终于成了多星球物种。",
           "pomodorosRequired": 5,
-          "prerequisites": ["space-elevator"],
+          "prerequisites": [
+            "space-elevator"
+          ],
           "category": "civic",
           "color": "#dc2626"
         },
@@ -1355,7 +1661,9 @@
           "name": "AI 治理",
           "description": "人工智能越来越强大，也越来越难以理解。你建立了一套框架——确保AI的决策是透明的、可问责的。",
           "pomodorosRequired": 4,
-          "prerequisites": ["artificial-intelligence"],
+          "prerequisites": [
+            "artificial-intelligence"
+          ],
           "category": "civic",
           "color": "#ca8a04"
         },
@@ -1364,7 +1672,9 @@
           "name": "基因编辑",
           "description": "脑机接口让你理解了大脑的编码方式，你进一步掌握了生命本身的编码。你可以在DNA层面修改任何生物。",
           "pomodorosRequired": 4,
-          "prerequisites": ["brain-computer-interface"],
+          "prerequisites": [
+            "brain-computer-interface"
+          ],
           "category": "technology",
           "color": "#16a34a"
         },
@@ -1373,7 +1683,10 @@
           "name": "虚拟现实",
           "description": "脑机接口直接向大脑发送信号，量子计算渲染出无穷细节。虚拟世界和现实世界的边界变得模糊。",
           "pomodorosRequired": 3,
-          "prerequisites": ["brain-computer-interface", "quantum-computing"],
+          "prerequisites": [
+            "brain-computer-interface",
+            "quantum-computing"
+          ],
           "category": "technology",
           "color": "#c026d3"
         },
@@ -1382,7 +1695,9 @@
           "name": "小行星采矿",
           "description": "火星殖民证明了太空定居的可行性。你把目光投向了小行星带——那里有取之不尽的稀有矿物。",
           "pomodorosRequired": 3,
-          "prerequisites": ["mars-colonization"],
+          "prerequisites": [
+            "mars-colonization"
+          ],
           "category": "technology",
           "color": "#78716c"
         },
@@ -1391,7 +1706,10 @@
           "name": "戴森球",
           "description": "小行星采矿提供了材料，核聚变提供了技术。你开始在太阳周围建造一个巨大的能量收集结构——戴森球。",
           "pomodorosRequired": 5,
-          "prerequisites": ["asteroid-mining", "nuclear-fusion"],
+          "prerequisites": [
+            "asteroid-mining",
+            "nuclear-fusion"
+          ],
           "category": "technology",
           "color": "#f59e0b"
         },
@@ -1400,7 +1718,10 @@
           "name": "星际飞船",
           "description": "戴森球提供了几乎无限的能量，太空电梯提供了发射基础。你建造了一艘能跨越星际的飞船——目的地是最近的恒星。",
           "pomodorosRequired": 5,
-          "prerequisites": ["dyson-sphere", "space-elevator"],
+          "prerequisites": [
+            "dyson-sphere",
+            "space-elevator"
+          ],
           "category": "technology",
           "color": "#1e3a5f"
         },
@@ -1409,7 +1730,10 @@
           "name": "纳米技术",
           "description": "基因编辑让你掌握了分子层面的操作，量子计算提供了精确控制。你能建造比细胞还小的机器。",
           "pomodorosRequired": 3,
-          "prerequisites": ["gene-editing", "quantum-computing"],
+          "prerequisites": [
+            "gene-editing",
+            "quantum-computing"
+          ],
           "category": "technology",
           "color": "#06b6d4"
         },
@@ -1418,7 +1742,11 @@
           "name": "后人类主义",
           "description": "基因编辑重塑了身体，虚拟现实重塑了意识，AI治理重塑了社会。人类不再受限于进化的偶然——你开始选择自己想成为什么。",
           "pomodorosRequired": 4,
-          "prerequisites": ["gene-editing", "virtual-reality", "ai-governance"],
+          "prerequisites": [
+            "gene-editing",
+            "virtual-reality",
+            "ai-governance"
+          ],
           "category": "humanities",
           "color": "#6b21a8"
         }

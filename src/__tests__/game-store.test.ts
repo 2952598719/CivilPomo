@@ -29,7 +29,8 @@ describe("gameStore", () => {
   });
 
   it("marks node complete when all pomodoros done", () => {
-    useGameStore.getState().selectNode("fire"); // fire requires 2 pomodoros
+    useGameStore.getState().selectNode("fire"); // fire requires 3 pomodoros
+    useGameStore.getState().completePomodoro();
     useGameStore.getState().completePomodoro();
     useGameStore.getState().completePomodoro();
     const state = useGameStore.getState();
