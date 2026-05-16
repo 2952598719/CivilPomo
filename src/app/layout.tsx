@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { NavBar } from "@/components/layout/nav-bar";
+import { HydrateProvider } from "@/components/layout/hydrate-provider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -19,8 +20,10 @@ export default function RootLayout({
   return (
     <html lang="zh-CN" className={cn("font-sans", inter.variable)}>
       <body className="min-h-screen bg-background font-sans antialiased">
-        <NavBar />
-        <main className="mx-auto max-w-4xl p-4">{children}</main>
+        <HydrateProvider>
+          <NavBar />
+          <main className="mx-auto max-w-4xl p-4">{children}</main>
+        </HydrateProvider>
       </body>
     </html>
   );
