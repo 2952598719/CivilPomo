@@ -6,6 +6,7 @@ interface NarrativeRequest {
   currentPomodoro: number;
   totalPomodoros: number;
   prerequisiteDescriptions: string[];
+  isFinalPomodoro?: boolean;
 }
 
 export async function POST(request: NextRequest) {
@@ -27,7 +28,23 @@ export async function POST(request: NextRequest) {
       ? `\n已完成的前置技术：${body.prerequisiteDescriptions.join("；")}`
       : "";
 
-  const prompt = `你是一个沉浸式叙事生成器。
+  const isFinal = body.isFinalPomodoro ?? body.currentPomodoro >= body.totalPomodoros;
+
+  const prompt = isFinal
+    ? `你是一个沉浸式叙事生成器。
+
+当前节点：${body.nodeName}
+节点描述：${body.nodeDescription}
+进度：最后一个番茄（第 ${body.currentPomodoro} / 共 ${body.totalPomodoros}）${prerequisiteContext}
+
+这是该节点的最后一个番茄。请用第二人称（"你"）描述这项技术/知识终于被掌握或实现的场景。
+要求：
+- 描述一个具体的完成时刻，有收获感和满足感
+- 不要出现"萌芽""发展""进步"这类抽象词汇
+- 画面感强，像在描述一个场景
+- 50-100 字
+- 只输出叙事文本，不要其他内容`
+    : `你是一个沉浸式叙事生成器。
 
 当前节点：${body.nodeName}
 节点描述：${body.nodeDescription}

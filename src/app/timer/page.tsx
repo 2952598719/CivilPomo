@@ -42,6 +42,7 @@ export default function TimerPage() {
           currentPomodoro: progress,
           totalPomodoros: currentNode.pomodorosRequired,
           prerequisiteDescriptions: prereqDescriptions,
+          isFinalPomodoro: progress >= currentNode.pomodorosRequired,
         }),
       });
       const data = await res.json();
