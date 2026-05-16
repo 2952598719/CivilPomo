@@ -2,13 +2,16 @@
 
 import { PomodoroTimer } from "@/components/timer/pomodoro-timer";
 import { useGameStore } from "@/stores/game-store";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { NarrativeModal } from "@/components/game/narrative-modal";
 import { NodeSelector } from "@/components/game/node-selector";
 import { NodeProgress } from "@/components/game/node-progress";
 import { addNarrative } from "@/lib/storage";
 
 export default function TimerPage() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   const { currentNodeId, completedPomodoros, tree, currentEraIndex } =
     useGameStore();
   const [showNarrative, setShowNarrative] = useState(false);
@@ -61,6 +64,18 @@ export default function TimerPage() {
     }
     useGameStore.getState().completePomodoro();
   };
+
+  if (!mounted) {
+    return (
+      <div className="flex flex-col items-center gap-8 py-8">
+        <div className="text-center">
+          <p className="text-sm text-muted-foreground">原始时代</p>
+          <p className="mt-2 text-lg text-muted-foreground">加载中...</p>
+        </div>
+        <PomodoroTimer canStart={false} />
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center gap-8 py-8">
