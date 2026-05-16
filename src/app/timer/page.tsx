@@ -21,7 +21,7 @@ export default function TimerPage() {
 
   const currentEra = tree.eras[currentEraIndex];
 
-  const handleWorkComplete = useCallback(async () => {
+  const handleWorkComplete = useCallback(async (_pomodorosCompleted: number) => {
     if (!currentNode) return;
     setNarrativeLoading(true);
     setShowNarrative(true);

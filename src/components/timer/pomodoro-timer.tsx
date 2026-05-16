@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useCallback, useState } from "react";
 import { useTimerStore } from "@/stores/timer-store";
+import { useGameStore } from "@/stores/game-store";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -19,7 +20,7 @@ const phaseLabels = {
 };
 
 interface PomodoroTimerProps {
-  onWorkComplete?: () => void;
+  onWorkComplete?: (pomodorosCompleted: number) => void;
   canStart?: boolean;
 }
 
@@ -56,7 +57,9 @@ export function PomodoroTimer({ onWorkComplete, canStart = true }: PomodoroTimer
         if (useTimerStore.getState().secondsRemaining <= 0) {
           clearTimer();
           if (state.timerType === "work") {
-            onWorkCompleteRef.current?.();
+            const totalPomodoros = useGameStore.getState().totalPomodoros + 1;
+            state.completeWork(totalPomodoros);
+            onWorkCompleteRef.current?.(totalPomodoros);
           } else {
             state.completeBreak();
           }

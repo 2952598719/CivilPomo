@@ -29,8 +29,8 @@ export function NarrativeModal({
           <DialogTitle>进展</DialogTitle>
           <DialogDescription asChild>
             {loading ? (
-              <p className="animate-pulse text-muted-foreground">
-                正在生成叙事...
+              <p className="text-2xl tracking-widest text-muted-foreground animate-pulse">
+                ···
               </p>
             ) : (
               <p className="text-base leading-relaxed text-foreground">
