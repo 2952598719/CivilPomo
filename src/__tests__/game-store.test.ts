@@ -37,16 +37,34 @@ describe("gameStore", () => {
     expect(state.currentNodeId).toBeNull();
   });
 
-  it("advances era when all nodes in current era are complete", () => {
+  it("shows transition node when all era nodes complete", () => {
     const store = useGameStore.getState();
-    // Complete all ancient era nodes: fire(2), language(3), stone-tools(2)
-    ["fire", "language", "stone-tools"].forEach((nodeId) => {
-      store.selectNode(nodeId);
-      const node = store.tree.eras[0].nodes.find((n) => n.id === nodeId)!;
+    const firstEra = store.tree.eras[0];
+    firstEra.nodes.forEach((node) => {
+      store.selectNode(node.id);
       for (let i = 0; i < node.pomodorosRequired; i++) {
         store.completePomodoro();
       }
     });
+    // Era not advanced yet — transition node appears first
+    expect(useGameStore.getState().currentEraIndex).toBe(0);
+    expect(useGameStore.getState().getAvailableNodeIds()).toEqual([
+      `__transition__${firstEra.id}`,
+    ]);
+  });
+
+  it("advances era after transition node pomodoro", () => {
+    const store = useGameStore.getState();
+    const firstEra = store.tree.eras[0];
+    firstEra.nodes.forEach((node) => {
+      store.selectNode(node.id);
+      for (let i = 0; i < node.pomodorosRequired; i++) {
+        store.completePomodoro();
+      }
+    });
+    store.selectNode(`__transition__${firstEra.id}`);
+    const didTransition = store.completePomodoro();
+    expect(didTransition).toBe(true);
     expect(useGameStore.getState().currentEraIndex).toBe(1);
   });
 

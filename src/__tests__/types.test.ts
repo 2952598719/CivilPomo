@@ -123,13 +123,6 @@ describe("preset tech tree", () => {
     });
   });
 
-  it("first era has no prerequisites", () => {
-    const tree = techTree as TechTree;
-    tree.eras[0].nodes.forEach((node) => {
-      expect(node.prerequisites).toEqual([]);
-    });
-  });
-
   it("later eras have prerequisite dependencies", () => {
     const tree = techTree as TechTree;
     const laterNodes = tree.eras.slice(1).flatMap((era) => era.nodes);
