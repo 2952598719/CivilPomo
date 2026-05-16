@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
 import { useTimerStore } from "@/stores/timer-store";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -23,6 +23,9 @@ interface PomodoroTimerProps {
 }
 
 export function PomodoroTimer({ onWorkComplete }: PomodoroTimerProps) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   const {
     phase,
     timerType,
@@ -67,6 +70,20 @@ export function PomodoroTimer({ onWorkComplete }: PomodoroTimerProps) {
   const handleStart = () => start();
   const handlePause = () => pause();
   const handleResume = () => resume();
+
+  if (!mounted) {
+    return (
+      <Card className="w-full max-w-sm">
+        <CardContent className="flex flex-col items-center gap-6 p-8">
+          <p className="text-sm text-muted-foreground">准备开始</p>
+          <p className="text-6xl font-mono font-bold tabular-nums">--:--</p>
+          <div className="flex gap-3">
+            <Button size="lg" disabled>开始专注</Button>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
 
   return (
     <Card className="w-full max-w-sm">
