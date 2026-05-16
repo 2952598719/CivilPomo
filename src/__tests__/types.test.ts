@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { isNodeUnlocked, isEraComplete, getAvailableNodes, findNodeById } from "@/lib/game-logic";
 import type { TechTree } from "@/data/types";
+import techTree from "@/data/tech-tree.json";
 
 const mockTree: TechTree = {
   id: "test",
@@ -88,5 +89,51 @@ describe("findNodeById", () => {
 
   it("returns null for unknown node", () => {
     expect(findNodeById(mockTree, "z")).toBeNull();
+  });
+});
+
+describe("preset tech tree", () => {
+  it("conforms to TechTree structure", () => {
+    const tree = techTree as TechTree;
+    expect(tree.id).toBe("civ-classic");
+    expect(tree.eras.length).toBeGreaterThan(0);
+    tree.eras.forEach((era) => {
+      expect(era.nodes.length).toBeGreaterThan(0);
+      era.nodes.forEach((node) => {
+        expect(node.id).toBeTruthy();
+        expect(node.name).toBeTruthy();
+        expect(node.description).toBeTruthy();
+        expect(node.pomodorosRequired).toBeGreaterThan(0);
+        expect(["technology", "humanities"]).toContain(node.category);
+      });
+    });
+  });
+
+  it("has valid prerequisite references", () => {
+    const tree = techTree as TechTree;
+    const allNodeIds = new Set(
+      tree.eras.flatMap((era) => era.nodes.map((n) => n.id))
+    );
+    tree.eras.forEach((era) => {
+      era.nodes.forEach((node) => {
+        node.prerequisites.forEach((prereqId) => {
+          expect(allNodeIds.has(prereqId)).toBe(true);
+        });
+      });
+    });
+  });
+
+  it("first era has no prerequisites", () => {
+    const tree = techTree as TechTree;
+    tree.eras[0].nodes.forEach((node) => {
+      expect(node.prerequisites).toEqual([]);
+    });
+  });
+
+  it("later eras have prerequisite dependencies", () => {
+    const tree = techTree as TechTree;
+    const laterNodes = tree.eras.slice(1).flatMap((era) => era.nodes);
+    const hasPrereqs = laterNodes.some((n) => n.prerequisites.length > 0);
+    expect(hasPrereqs).toBe(true);
   });
 });

@@ -1,0 +1,104 @@
+{
+  "id": "civ-classic",
+  "name": "文明科技树",
+  "eras": [
+    {
+      "id": "ancient",
+      "name": "原始时代",
+      "nodes": [
+        {
+          "id": "fire",
+          "name": "火",
+          "description": "你的族群学会了控制火焰。夜晚不再寒冷，生肉变成了熟食。",
+          "pomodorosRequired": 2,
+          "prerequisites": [],
+          "category": "technology"
+        },
+        {
+          "id": "language",
+          "name": "语言",
+          "description": "族群成员开始用声音和手势传递复杂信息。狩猎的计划能被描述，经验能被分享。",
+          "pomodorosRequired": 3,
+          "prerequisites": [],
+          "category": "humanities"
+        },
+        {
+          "id": "stone-tools",
+          "name": "石器",
+          "description": "你学会了敲打石头，制造出锋利的边缘。切割兽皮和刮削木头变得容易了。",
+          "pomodorosRequired": 2,
+          "prerequisites": [],
+          "category": "technology"
+        }
+      ]
+    },
+    {
+      "id": "neolithic",
+      "name": "新石器时代",
+      "nodes": [
+        {
+          "id": "agriculture",
+          "name": "农业",
+          "description": "你注意到掉落的种子会长出新的植物。你开始有意识地播种，等待收获。",
+          "pomodorosRequired": 4,
+          "prerequisites": ["fire", "stone-tools"],
+          "category": "technology"
+        },
+        {
+          "id": "pottery",
+          "name": "陶器",
+          "description": "湿泥在火中变硬。你捏出了第一个容器，可以盛水和储存粮食了。",
+          "pomodorosRequired": 3,
+          "prerequisites": ["fire"],
+          "category": "technology"
+        },
+        {
+          "id": "settlement",
+          "name": "定居",
+          "description": "族群不再四处迁徙。你和族人搭建了固定的住所，一个村落正在成形。",
+          "pomodorosRequired": 3,
+          "prerequisites": ["agriculture", "language"],
+          "category": "humanities"
+        }
+      ]
+    },
+    {
+      "id": "bronze",
+      "name": "青铜时代",
+      "nodes": [
+        {
+          "id": "wheel",
+          "name": "轮子",
+          "description": "一截圆木从坡上滚下去，你盯着它看了很久。你开始尝试把圆形的木片装到架子下面。",
+          "pomodorosRequired": 3,
+          "prerequisites": ["stone-tools"],
+          "category": "technology"
+        },
+        {
+          "id": "writing",
+          "name": "文字",
+          "description": "你开始在泥板上刻画符号来记录粮食的数量。符号越来越多，含义越来越丰富。",
+          "pomodorosRequired": 4,
+          "prerequisites": ["language", "pottery"],
+          "category": "humanities"
+        },
+        {
+          "id": "bronze-smelting",
+          "name": "青铜冶炼",
+          "description": "你发现把两种不同的石头放在一起加热，会流出一种闪亮的液体。冷却后，它比任何石头都坚硬。",
+          "pomodorosRequired": 4,
+          "prerequisites": ["pottery", "fire"],
+          "category": "technology"
+        },
+        {
+          "id": "trade",
+          "name": "贸易",
+          "description": "邻近的族群带着你没有的东西来了。你用多余的粮食换到了漂亮的贝壳和坚硬的黑曜石。",
+          "pomodorosRequired": 3,
+          "prerequisites": ["settlement", "wheel"],
+          "category": "humanities"
+        }
+      ]
+    }
+  ]
+}
