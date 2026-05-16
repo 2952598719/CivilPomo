@@ -16,7 +16,8 @@ export interface TechNode {
   description: string;
   pomodorosRequired: number;
   prerequisites: string[];
-  category: "technology" | "humanities";
+  category: "technology" | "humanities" | "civic";
+  color: string;
 }
 
 export interface UserProgress {

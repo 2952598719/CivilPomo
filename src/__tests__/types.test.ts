@@ -11,16 +11,16 @@ const mockTree: TechTree = {
       id: "era1",
       name: "Era 1",
       nodes: [
-        { id: "a", name: "A", description: "Node A", pomodorosRequired: 2, prerequisites: [], category: "technology" },
-        { id: "b", name: "B", description: "Node B", pomodorosRequired: 3, prerequisites: ["a"], category: "technology" },
-        { id: "c", name: "C", description: "Node C", pomodorosRequired: 1, prerequisites: ["a"], category: "humanities" },
+        { id: "a", name: "A", description: "Node A", pomodorosRequired: 2, prerequisites: [], category: "technology", color: "#ef4444" },
+        { id: "b", name: "B", description: "Node B", pomodorosRequired: 3, prerequisites: ["a"], category: "technology", color: "#3b82f6" },
+        { id: "c", name: "C", description: "Node C", pomodorosRequired: 1, prerequisites: ["a"], category: "humanities", color: "#22c55e" },
       ],
     },
     {
       id: "era2",
       name: "Era 2",
       nodes: [
-        { id: "d", name: "D", description: "Node D", pomodorosRequired: 2, prerequisites: ["b", "c"], category: "technology" },
+        { id: "d", name: "D", description: "Node D", pomodorosRequired: 2, prerequisites: ["b", "c"], category: "technology", color: "#a855f7" },
       ],
     },
   ],
@@ -104,7 +104,7 @@ describe("preset tech tree", () => {
         expect(node.name).toBeTruthy();
         expect(node.description).toBeTruthy();
         expect(node.pomodorosRequired).toBeGreaterThan(0);
-        expect(["technology", "humanities"]).toContain(node.category);
+        expect(["technology", "humanities", "civic"]).toContain(node.category);
       });
     });
   });
