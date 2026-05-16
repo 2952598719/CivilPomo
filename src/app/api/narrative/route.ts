@@ -52,8 +52,7 @@ export async function POST(request: NextRequest) {
       body: JSON.stringify({
         model: modelName,
         messages: [{ role: "user", content: prompt }],
-        max_tokens: 300,
-        temperature: 0.8,
+        max_tokens: 1024,
       }),
     });
 
@@ -69,7 +68,10 @@ export async function POST(request: NextRequest) {
     const textBlock = data.content?.find(
       (b: { type: string }) => b.type === "text"
     );
-    const narrative = textBlock?.text?.trim();
+    const thinkingBlock = data.content?.find(
+      (b: { type: string }) => b.type === "thinking"
+    );
+    const narrative = (textBlock?.text ?? thinkingBlock?.thinking)?.trim();
 
     if (!narrative) {
       return NextResponse.json(
