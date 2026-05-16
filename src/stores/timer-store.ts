@@ -96,7 +96,14 @@ export const useTimerStore = create<TimerState>((set, get) => {
       });
     },
 
-    setWorkMinutes: (min: number) => set({ workMinutes: min }),
+    setWorkMinutes: (min: number) => {
+      const state = get();
+      const updates: Partial<TimerState> = { workMinutes: min };
+      if (state.phase === "idle" && state.timerType === "work") {
+        updates.secondsRemaining = min * 60;
+      }
+      set(updates);
+    },
     setShortBreakMinutes: (min: number) => set({ shortBreakMinutes: min }),
     setLongBreakMinutes: (min: number) => set({ longBreakMinutes: min }),
   };
