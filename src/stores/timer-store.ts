@@ -65,7 +65,7 @@ export const useTimerStore = create<TimerState>((set, get) => {
 
     tick: () => {
       const state = get();
-      if (state.phase !== "running") return;
+      if (state.phase !== "running" && state.phase !== "break") return;
       const newSeconds = state.secondsRemaining - 1;
       if (newSeconds <= 0) {
         set({ secondsRemaining: 0 });

@@ -50,7 +50,7 @@ export function PomodoroTimer({ onWorkComplete, canStart = true }: PomodoroTimer
   }, []);
 
   useEffect(() => {
-    if (phase === "running") {
+    if (phase === "running" || phase === "break") {
       intervalRef.current = setInterval(() => {
         const state = useTimerStore.getState();
         state.tick();
