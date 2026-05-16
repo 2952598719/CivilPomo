@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(superpowers:writing-plans)",
+      "Skill(superpowers:subagent-driven-development)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-turbopack --yes)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-turbopack --use-npm)",
+      "Bash(npx create-next-app@latest --help)",
+      "Read(//d/files/code/FullStack/**)",
+      "Bash(npx create-next-app@latest civil-pomo-temp --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-turbopack --use-npm --disable-git)",
+      "Bash(cp -r civil-pomo-temp/* CivilPomo/)",
+      "Bash(cp civil-pomo-temp/.* CivilPomo/)",
+      "Bash(npm install *)",
+      "Bash(npm search *)",
+      "Bash(npx shadcn@latest init -d)",
+      "Bash(npx shadcn@latest add dialog progress card select label input -y)",
+      "Bash(npm run *)",
+      "Bash(nvm list *)",
+      "WebSearch",
+      "Bash(npm uninstall *)",
+      "Bash(npx create-next-app@14 civil-pomo-temp --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --disable-git)",
+      "Bash(npx shadcn-ui@latest init -d)",
+      "Bash(npx shadcn-ui@latest add button dialog progress card select label input -y)",
+      "Bash(npx shadcn-ui@0.8.0 add button dialog progress card select label input -y)",
+      "Bash(npm test *)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(taskkill /F /IM git.exe)",
+      "Bash(rm -f D:/files/code/FullStack/CivilPomo/.git/index.lock)"
+    ]
+  }
+}
