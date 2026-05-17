@@ -33,13 +33,11 @@ export default function RootLayout({
       <head>
         <link rel="apple-touch-icon" href="/icon-192.png" />
       </head>
-      <body className="h-screen overflow-hidden bg-background font-sans antialiased">
+      <body className="h-screen bg-background font-sans antialiased flex flex-col">
         <HydrateProvider>
-          <div className="h-full flex flex-col">
-            <TopBar />
-            <main className="flex-1 overflow-y-auto overflow-x-hidden p-4">{children}</main>
-            <BottomTabBar />
-          </div>
+          <TopBar />
+          <main className="flex-1 overflow-y-auto p-4">{children}</main>
+          <BottomTabBar />
           <Toaster />
         </HydrateProvider>
         <Script id="sw-register" strategy="afterInteractive">

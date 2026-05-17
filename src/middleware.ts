@@ -16,12 +16,10 @@ const PUBLIC_PATHS = ["/login", "/api/auth", "/manifest.json", "/sw.js", "/icon-
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Allow public paths
   if (PUBLIC_PATHS.some((p) => pathname.startsWith(p))) {
     return NextResponse.next();
   }
 
-  // Allow static assets
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/sounds") ||
@@ -30,7 +28,6 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Check JWT
   const token = request.cookies.get("civilpomo-token")?.value;
   if (!token) {
     return NextResponse.redirect(new URL("/login", request.url));
@@ -39,13 +36,11 @@ export async function middleware(request: NextRequest) {
   try {
     const { payload } = await jwtVerify(token, JWT_SECRET);
 
-    // For client-side navigations (RSC), skip Redis check — API routes validate session separately
     const isRSC = request.headers.get("RSC") === "1";
     if (isRSC) {
       return NextResponse.next();
     }
 
-    // Full page load: also verify session in Redis (single-device check)
     const email = payload.email as string;
     const activeToken = await redis.get(`session:${email}`);
     if (!activeToken || activeToken !== token) {
