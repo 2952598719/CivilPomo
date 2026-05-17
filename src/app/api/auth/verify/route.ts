@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
   const normalized = email.toLowerCase().trim();
   const stored = await redis.get(`verify:${normalized}`);
 
-  if (!stored || stored !== code) {
+  if (!stored || String(stored) !== String(code)) {
     return NextResponse.json({ error: "验证码错误或已过期" }, { status: 400 });
   }
 
