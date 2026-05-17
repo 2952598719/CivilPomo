@@ -33,15 +33,6 @@ export function InlineNodeSelector() {
   }, []);
 
   const era = tree.eras[currentEraIndex];
-  if (!era) return null;
-
-  const availableNodes = availableIds
-    .map((id) => findNodeById(tree, id)?.node ?? null)
-    .filter(Boolean);
-
-  if (availableNodes.length === 0) return <span>所有节点已完成</span>;
-
-  const currentNode = currentNodeId ? findNodeById(tree, currentNodeId)?.node : null;
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -52,6 +43,16 @@ export function InlineNodeSelector() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  if (!era) return null;
+
+  const availableNodes = availableIds
+    .map((id) => findNodeById(tree, id)?.node ?? null)
+    .filter(Boolean);
+
+  if (availableNodes.length === 0) return <span>所有节点已完成</span>;
+
+  const currentNode = currentNodeId ? findNodeById(tree, currentNodeId)?.node : null;
 
   return (
     <div ref={ref} className="relative inline-block">

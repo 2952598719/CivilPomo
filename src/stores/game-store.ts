@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { TechTree, UserProgress } from "@/data/types";
+import type { TechTree } from "@/data/types";
 import {
   isEraComplete,
   findNodeById,

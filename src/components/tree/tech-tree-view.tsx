@@ -2,7 +2,7 @@
 
 import { useGameStore } from "@/stores/game-store";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import type { Era } from "@/data/types";
 
