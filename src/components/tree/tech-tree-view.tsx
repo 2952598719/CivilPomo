@@ -406,7 +406,7 @@ export function TechTreeView() {
       </TabsList>
       {visibleEras.map((era, i) => (
         <TabsContent key={era.id} value={String(i)} className="mt-4">
-          <div style={{ height: "calc(100vh - 200px)" }}>
+          <div style={{ height: "calc(100dvh - 180px)" }}>
           <EraGraph
             era={era}
             eraIndex={i}
