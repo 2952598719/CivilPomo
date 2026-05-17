@@ -38,9 +38,15 @@ export async function middleware(request: NextRequest) {
 
   try {
     const { payload } = await jwtVerify(token, JWT_SECRET);
-    const email = payload.email as string;
 
-    // Check this token is the current active session (single-device)
+    // For client-side navigations (RSC), skip Redis check — API routes validate session separately
+    const isRSC = request.headers.get("RSC") === "1";
+    if (isRSC) {
+      return NextResponse.next();
+    }
+
+    // Full page load: also verify session in Redis (single-device check)
+    const email = payload.email as string;
     const activeToken = await redis.get(`session:${email}`);
     if (!activeToken || activeToken !== token) {
       const res = NextResponse.redirect(new URL("/login", request.url));

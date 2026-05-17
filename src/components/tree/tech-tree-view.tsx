@@ -393,7 +393,7 @@ export function TechTreeView() {
   if (!mounted || visibleEras.length === 0) return null;
 
   return (
-    <Tabs value={selectedTab} onValueChange={setSelectedTab}>
+    <Tabs value={selectedTab} onValueChange={setSelectedTab} className="h-full flex flex-col">
       <TabsList>
         {visibleEras.map((era, i) => (
           <TabsTrigger key={era.id} value={String(i)}>
@@ -405,8 +405,8 @@ export function TechTreeView() {
         ))}
       </TabsList>
       {visibleEras.map((era, i) => (
-        <TabsContent key={era.id} value={String(i)} className="mt-4">
-          <div style={{ height: "calc(100vh - 180px)" }}>
+        <TabsContent key={era.id} value={String(i)} className="flex-1 min-h-0 mt-2">
+          <div className="h-full">
           <EraGraph
             era={era}
             eraIndex={i}
