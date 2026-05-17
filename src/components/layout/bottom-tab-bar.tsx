@@ -18,7 +18,7 @@ export function BottomTabBar() {
   if (HIDE_ON.includes(pathname)) return null;
 
   return (
-    <nav className="relative flex items-end justify-around pb-4 pt-2 border-t bg-background">
+    <nav className="sticky bottom-0 z-50 flex items-end justify-around pb-4 pt-2 border-t bg-background">
       <TabItem
         href="/tree"
         icon={<Split size={24} />}

@@ -46,7 +46,12 @@ interface PomodoroTimerProps {
 
 export function PomodoroTimer({ onStart, canStart = true }: PomodoroTimerProps) {
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+    import("@/lib/capacitor").then(({ requestNotificationPermission }) => {
+      requestNotificationPermission();
+    });
+  }, []);
 
   const {
     phase,

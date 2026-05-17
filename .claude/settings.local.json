@@ -38,7 +38,11 @@
       "Bash(pkill -f \"next dev\")",
       "Bash(npx next *)",
       "Bash(node -e ' *)",
-      "Bash(node -e \"const next = require\\('next/package.json'\\); console.log\\(next.version\\)\")"
+      "Bash(node -e \"const next = require\\('next/package.json'\\); console.log\\(next.version\\)\")",
+      "Bash(mkdir -p D:/files/code/FullStack/CivilPomo/out)",
+      "Bash(npx cap *)",
+      "Bash(node -e \"console.log\\(require\\('@capacitor/cli/package.json'\\).version\\)\")",
+      "Bash(where sdkmanager *)"
     ]
   }
 }
