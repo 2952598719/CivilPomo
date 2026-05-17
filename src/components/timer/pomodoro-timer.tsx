@@ -122,7 +122,7 @@ export function PomodoroTimer({ onStart, canStart = true }: PomodoroTimerProps) 
         </div>
       </div>
 
-      <div className="flex gap-3">
+      <div className="flex gap-3 mt-4">
         {phase === "idle" && (
           <Button onClick={handleStart} size="lg" disabled={!canStart}>
             开始专注

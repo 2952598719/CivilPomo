@@ -8,9 +8,12 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useGameStore } from "@/stores/game-store";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
 import type { TimerSettings } from "@/data/types";
 
 export default function SettingsPage() {
+  const router = useRouter();
   const [settings, setSettings] = useState<TimerSettings>({
     workMinutes: 25,
     shortBreakMinutes: 5,
@@ -44,8 +47,13 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="mx-auto max-w-md space-y-6 py-8">
-      <h1 className="text-2xl font-bold">设置</h1>
+    <div className="mx-auto max-w-md space-y-6 pt-3 pb-8 px-4">
+      <div className="flex items-center gap-3">
+        <button onClick={() => router.back()} className="p-1 text-muted-foreground">
+          <ArrowLeft size={20} />
+        </button>
+        <h1 className="text-2xl font-bold">设置</h1>
+      </div>
 
       <Card>
         <CardHeader>

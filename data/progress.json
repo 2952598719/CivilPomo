@@ -1,1 +1,14 @@
-{}
+{
+  "currentNodeId": null,
+  "completedPomodoros": 0,
+  "completedNodes": [
+    "fire"
+  ],
+  "currentEraIndex": 0,
+  "totalPomodoros": 3,
+  "timerSettings": {
+    "workMinutes": 1,
+    "shortBreakMinutes": 1,
+    "longBreakMinutes": 1
+  }
+}

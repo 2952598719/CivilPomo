@@ -1,6 +1,7 @@
 "use client";
 
 import { useGameStore } from "@/stores/game-store";
+import { isTransitionNode, findNodeById } from "@/lib/game-logic";
 import {
   Select,
   SelectContent,
@@ -17,7 +18,10 @@ export function NodeSelector() {
   const era = tree.eras[currentEraIndex];
   if (!era) return null;
 
-  const availableNodes = era.nodes.filter((n) => availableIds.includes(n.id));
+  const availableNodes = availableIds.map((id) => {
+    const info = findNodeById(tree, id);
+    return info?.node ?? null;
+  }).filter(Boolean);
 
   if (availableNodes.length === 0) {
     return (
@@ -38,11 +42,13 @@ export function NodeSelector() {
         </SelectTrigger>
         <SelectContent>
           {availableNodes.map((node) => (
-            <SelectItem key={node.id} value={node.id}>
-              {node.name}{" "}
-              <span className="ml-1 text-xs text-muted-foreground">
-                ({node.category === "technology" ? "科技" : "人文"})
-              </span>
+            <SelectItem key={node!.id} value={node!.id}>
+              {node!.name}{" "}
+              {!isTransitionNode(node!.id) && (
+                <span className="ml-1 text-xs text-muted-foreground">
+                  ({node!.category === "technology" ? "科技" : node!.category === "humanities" ? "人文" : "民政"})
+                </span>
+              )}
             </SelectItem>
           ))}
         </SelectContent>

@@ -1,7 +1,12 @@
 import { create } from "zustand";
 import type { TechTree, UserProgress } from "@/data/types";
-import { isEraComplete, findNodeById } from "@/lib/game-logic";
-import { loadProgress, saveProgress } from "@/lib/storage";
+import {
+  isEraComplete,
+  findNodeById,
+  isTransitionNode,
+  makeTransitionNode,
+} from "@/lib/game-logic";
+import { loadProgress, saveProgress, clearAllData } from "@/lib/storage";
 import techTreeData from "@/data/tech-tree.json";
 
 const tree = techTreeData as TechTree;
@@ -17,9 +22,10 @@ interface GameState {
   totalPomodoros: number;
 
   selectNode: (nodeId: string) => void;
-  completePomodoro: () => void;
+  completePomodoro: () => boolean;
   resetGame: () => void;
   getAvailableNodeIds: () => string[];
+  getNodeProgress: (nodeId: string) => number;
 }
 
 export const useGameStore = create<GameState>((set, get) => {
@@ -44,29 +50,32 @@ export const useGameStore = create<GameState>((set, get) => {
 
     completePomodoro: () => {
       const state = get();
-      if (!state.currentNodeId) return;
+      if (!state.currentNodeId) return false;
 
       const newCompleted = state.completedPomodoros + 1;
       const newTotal = state.totalPomodoros + 1;
       const nodeInfo = findNodeById(tree, state.currentNodeId);
 
-      if (!nodeInfo) return;
+      if (!nodeInfo) return false;
 
       const nodeComplete = newCompleted >= nodeInfo.node.pomodorosRequired;
 
       const newCompletedNodes = [...state.completedNodes];
       let newCurrentNodeId: string | null = state.currentNodeId;
       let newEraIndex = state.currentEraIndex;
+      let didTransition = false;
 
       if (nodeComplete) {
-        newCompletedNodes.push(state.currentNodeId);
         newCurrentNodeId = null;
         nodeProgressMap.delete(state.currentNodeId);
 
-        if (isEraComplete(tree, newEraIndex, newCompletedNodes)) {
+        if (isTransitionNode(state.currentNodeId)) {
           if (newEraIndex < tree.eras.length - 1) {
             newEraIndex += 1;
+            didTransition = true;
           }
+        } else {
+          newCompletedNodes.push(state.currentNodeId);
         }
       }
 
@@ -89,19 +98,13 @@ export const useGameStore = create<GameState>((set, get) => {
         totalPomodoros: fullState.totalPomodoros,
         timerSettings: loadProgress().timerSettings,
       });
+
+      return didTransition;
     },
 
     resetGame: () => {
       nodeProgressMap.clear();
-      const defaultProgress: UserProgress = {
-        currentNodeId: null,
-        completedPomodoros: 0,
-        completedNodes: [],
-        currentEraIndex: 0,
-        totalPomodoros: 0,
-        timerSettings: { workMinutes: 25, shortBreakMinutes: 5, longBreakMinutes: 15 },
-      };
-      saveProgress(defaultProgress);
+      clearAllData();
       set({
         currentNodeId: null,
         completedPomodoros: 0,
@@ -111,17 +114,38 @@ export const useGameStore = create<GameState>((set, get) => {
       });
     },
 
+    getNodeProgress: (nodeId: string) => {
+      const state = get();
+      if (state.currentNodeId === nodeId) return state.completedPomodoros;
+      if (state.completedNodes.includes(nodeId)) {
+        const node = tree.eras.flatMap((e) => e.nodes).find((n) => n.id === nodeId);
+        return node?.pomodorosRequired ?? 0;
+      }
+      return nodeProgressMap.get(nodeId) ?? 0;
+    },
+
     getAvailableNodeIds: () => {
       const state = get();
       const era = tree.eras[state.currentEraIndex];
       if (!era) return [];
-      return era.nodes
+      const available = era.nodes
         .filter(
           (n) =>
             !state.completedNodes.includes(n.id) &&
             n.prerequisites.every((p) => state.completedNodes.includes(p))
         )
         .map((n) => n.id);
+
+      if (
+        available.length === 0 &&
+        isEraComplete(tree, state.currentEraIndex, state.completedNodes) &&
+        state.currentEraIndex < tree.eras.length - 1 &&
+        !state.currentNodeId
+      ) {
+        return [makeTransitionNode(era).id];
+      }
+
+      return available;
     },
   };
 });

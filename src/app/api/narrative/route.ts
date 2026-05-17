@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
 - 描述一个具体的完成时刻，有收获感和满足感
 - 不要出现"萌芽""发展""进步"这类抽象词汇
 - 画面感强，像在描述一个场景
-- 50-100 字
+- 严格控制在 50 字以内
 - 只输出叙事文本，不要其他内容`
     : `你是一个沉浸式叙事生成器。
 
@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
 - 描述具体发生的事件或场景，不要历史总结
 - 不要出现"萌芽""发展""进步"这类抽象词汇
 - 画面感强，像在描述一个场景
-- 50-100 字
+- 严格控制在 50 字以内
 - 只输出叙事文本，不要其他内容`;
 
   try {
@@ -70,6 +70,7 @@ export async function POST(request: NextRequest) {
         model: modelName,
         messages: [{ role: "user", content: prompt }],
         max_tokens: 1024,
+        thinking: { type: "disabled" },
       }),
     });
 
@@ -82,15 +83,14 @@ export async function POST(request: NextRequest) {
     }
 
     const data = await response.json();
-    const textBlock = data.content?.find(
-      (b: { type: string }) => b.type === "text"
-    );
-    const thinkingBlock = data.content?.find(
-      (b: { type: string }) => b.type === "thinking"
-    );
-    const narrative = (textBlock?.text ?? thinkingBlock?.thinking)?.trim();
+    const narrative = data.content
+      ?.filter((b: { type: string }) => b.type === "text")
+      .map((b: { text: string }) => b.text)
+      .join("")
+      ?.trim();
 
     if (!narrative) {
+      console.error("[narrative] No text in response:", JSON.stringify(data.content));
       return NextResponse.json(
         { error: "Empty response from AI" },
         { status: 502 }

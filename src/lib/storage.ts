@@ -85,8 +85,8 @@ export async function hydrateFromServer(): Promise<{
     const serverProgress = await progRes.json();
     const serverNarratives = await narrRes.json();
 
-    const hasProgress = Object.keys(serverProgress).length > 0;
-    const hasNarratives = Object.keys(serverNarratives).length > 0;
+    const hasProgress = serverProgress != null && Object.keys(serverProgress).length > 0;
+    const hasNarratives = serverNarratives != null && Object.keys(serverNarratives).length > 0;
 
     if (hasProgress) {
       const merged = { ...defaultProgress, ...serverProgress };
