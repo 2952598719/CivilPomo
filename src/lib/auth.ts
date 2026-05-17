@@ -1,5 +1,6 @@
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
+import redis from "@/lib/kv";
 
 const JWT_SECRET = new TextEncoder().encode(
   process.env.JWT_SECRET ?? "civilpomo-dev-secret"
@@ -28,11 +29,23 @@ export async function getUserEmail(): Promise<string | null> {
   const cookieStore = await cookies();
   const token = cookieStore.get(COOKIE_NAME)?.value;
   if (!token) return null;
-  return verifyToken(token);
+
+  const email = await verifyToken(token);
+  if (!email) return null;
+
+  // Check that this token is the current active session
+  const activeToken = await redis.get(`session:${email}`);
+  if (!activeToken || activeToken !== token) return null;
+
+  return email;
 }
 
 export async function setUserCookie(email: string): Promise<string> {
   const token = await signToken(email);
+
+  // Store as the only valid session for this user (single-device)
+  await redis.set(`session:${email}`, token, { ex: TOKEN_MAX_AGE });
+
   const cookieStore = await cookies();
   cookieStore.set(COOKIE_NAME, token, {
     httpOnly: true,
@@ -44,11 +57,12 @@ export async function setUserCookie(email: string): Promise<string> {
   return token;
 }
 
-export function clearUserCookie() {
-  // In API routes we set the cookie header directly
-  return {
-    name: COOKIE_NAME,
-    value: "",
-    options: { httpOnly: true, secure: true, sameSite: "lax" as const, maxAge: 0, path: "/" },
-  };
+export async function validateTokenFromRequest(token: string): Promise<string | null> {
+  const email = await verifyToken(token);
+  if (!email) return null;
+
+  const activeToken = await redis.get(`session:${email}`);
+  if (!activeToken || activeToken !== token) return null;
+
+  return email;
 }

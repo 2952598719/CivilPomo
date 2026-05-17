@@ -1,9 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { jwtVerify } from "jose";
+import { Redis } from "@upstash/redis";
 
 const JWT_SECRET = new TextEncoder().encode(
   process.env.JWT_SECRET ?? "civilpomo-dev-secret"
 );
+
+const redis = new Redis({
+  url: process.env.KV_REST_API_URL!,
+  token: process.env.KV_REST_API_TOKEN!,
+});
 
 const PUBLIC_PATHS = ["/login", "/api/auth", "/manifest.json", "/sw.js", "/icon-192.png", "/icon-512.png"];
 
@@ -31,7 +37,17 @@ export async function middleware(request: NextRequest) {
   }
 
   try {
-    await jwtVerify(token, JWT_SECRET);
+    const { payload } = await jwtVerify(token, JWT_SECRET);
+    const email = payload.email as string;
+
+    // Check this token is the current active session (single-device)
+    const activeToken = await redis.get(`session:${email}`);
+    if (!activeToken || activeToken !== token) {
+      const res = NextResponse.redirect(new URL("/login", request.url));
+      res.cookies.set("civilpomo-token", "", { maxAge: 0, path: "/" });
+      return res;
+    }
+
     return NextResponse.next();
   } catch {
     return NextResponse.redirect(new URL("/login", request.url));

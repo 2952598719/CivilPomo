@@ -14,19 +14,21 @@ import type { TimerSettings } from "@/data/types";
 
 export default function SettingsPage() {
   const router = useRouter();
-  const [settings, setSettings] = useState<TimerSettings>({
-    workMinutes: 25,
-    shortBreakMinutes: 5,
-    longBreakMinutes: 15,
-  });
+  const [form, setForm] = useState({ work: "25", shortBreak: "5", longBreak: "15" });
   const [saved, setSaved] = useState(false);
 
   useEffect(() => {
     const progress = loadProgress();
-    setSettings(progress.timerSettings);
+    const s = progress.timerSettings;
+    setForm({ work: String(s.workMinutes), shortBreak: String(s.shortBreakMinutes), longBreak: String(s.longBreakMinutes) });
   }, []);
 
   const handleSave = () => {
+    const settings: TimerSettings = {
+      workMinutes: Math.max(1, Math.min(120, Number(form.work) || 25)),
+      shortBreakMinutes: Math.max(1, Math.min(30, Number(form.shortBreak) || 5)),
+      longBreakMinutes: Math.max(1, Math.min(60, Number(form.longBreak) || 15)),
+    };
     const progress = loadProgress();
     progress.timerSettings = settings;
     saveProgress(progress);
@@ -42,7 +44,8 @@ export default function SettingsPage() {
       useGameStore.getState().resetGame();
       useTimerStore.getState().reset();
       const progress = loadProgress();
-      setSettings(progress.timerSettings);
+      const s = progress.timerSettings;
+      setForm({ work: String(s.workMinutes), shortBreak: String(s.shortBreakMinutes), longBreak: String(s.longBreakMinutes) });
     }
   };
 
@@ -64,45 +67,30 @@ export default function SettingsPage() {
             <Label htmlFor="work">工作时长（分钟）</Label>
             <Input
               id="work"
-              type="number"
-              min={1}
-              max={120}
-              value={settings.workMinutes}
-              onChange={(e) =>
-                setSettings({ ...settings, workMinutes: Number(e.target.value) })
-              }
+              type="text"
+              inputMode="numeric"
+              value={form.work}
+              onChange={(e) => setForm({ ...form, work: e.target.value.replace(/\D/g, "") })}
             />
           </div>
           <div>
             <Label htmlFor="shortBreak">短休息（分钟）</Label>
             <Input
               id="shortBreak"
-              type="number"
-              min={1}
-              max={30}
-              value={settings.shortBreakMinutes}
-              onChange={(e) =>
-                setSettings({
-                  ...settings,
-                  shortBreakMinutes: Number(e.target.value),
-                })
-              }
+              type="text"
+              inputMode="numeric"
+              value={form.shortBreak}
+              onChange={(e) => setForm({ ...form, shortBreak: e.target.value.replace(/\D/g, "") })}
             />
           </div>
           <div>
             <Label htmlFor="longBreak">长休息（分钟）</Label>
             <Input
               id="longBreak"
-              type="number"
-              min={1}
-              max={60}
-              value={settings.longBreakMinutes}
-              onChange={(e) =>
-                setSettings({
-                  ...settings,
-                  longBreakMinutes: Number(e.target.value),
-                })
-              }
+              type="text"
+              inputMode="numeric"
+              value={form.longBreak}
+              onChange={(e) => setForm({ ...form, longBreak: e.target.value.replace(/\D/g, "") })}
             />
           </div>
           <Button onClick={handleSave} className="w-full">
