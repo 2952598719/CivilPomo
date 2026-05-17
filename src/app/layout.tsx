@@ -33,7 +33,7 @@ export default function RootLayout({
       <head>
         <link rel="apple-touch-icon" href="/icon-192.png" />
       </head>
-      <body className="h-screen bg-background font-sans antialiased flex flex-col">
+      <body className="h-dvh overflow-hidden bg-background font-sans antialiased flex flex-col">
         <HydrateProvider>
           <TopBar />
           <main className="flex-1 overflow-y-auto p-4">{children}</main>
