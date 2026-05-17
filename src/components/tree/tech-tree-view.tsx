@@ -232,27 +232,42 @@ function ProgressCircle({
           className="animate-pulse"
         />
       )}
-      <text
-        x={cx}
-        y={cy - 4}
-        textAnchor="middle"
-        dominantBaseline="middle"
-        style={{ fill: "#111" }}
-        fontSize={11}
-        fontWeight="bold"
-      >
-        {name}
-      </text>
-      <text
-        x={cx}
-        y={cy + 12}
-        textAnchor="middle"
-        dominantBaseline="middle"
-        style={{ fill: "#666" }}
-        fontSize={9}
-      >
-        {progress}/{total}
-      </text>
+      {status === "locked" ? (
+        <text
+          x={cx}
+          y={cy + 1}
+          textAnchor="middle"
+          dominantBaseline="middle"
+          style={{ fill: "#999" }}
+          fontSize={18}
+        >
+          ?
+        </text>
+      ) : (
+        <>
+          <text
+            x={cx}
+            y={cy - 4}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            style={{ fill: "#111" }}
+            fontSize={11}
+            fontWeight="bold"
+          >
+            {name}
+          </text>
+          <text
+            x={cx}
+            y={cy + 12}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            style={{ fill: "#666" }}
+            fontSize={9}
+          >
+            {progress}/{total}
+          </text>
+        </>
+      )}
     </g>
   );
 }
