@@ -13,7 +13,7 @@ export function TopBar() {
 
   useEffect(() => {
     const saved = localStorage.getItem("theme");
-    const isDark = saved !== "light"; // default dark
+    const isDark = saved === "dark"; // default light
     setDark(isDark);
     document.documentElement.classList.toggle("dark", isDark);
   }, []);
