@@ -1,14 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Settings, Sun, Moon } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { Settings, Sun, Moon, LogOut } from "lucide-react";
 import { useState, useEffect } from "react";
 
-const HIDE_ON = ["/settings", "/transition"];
+const HIDE_ON = ["/settings", "/transition", "/login"];
 
 export function TopBar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
@@ -25,6 +26,11 @@ export function TopBar() {
     localStorage.setItem("theme", next ? "dark" : "light");
   };
 
+  const handleLogout = async () => {
+    await fetch("/api/auth/logout", { method: "POST" });
+    router.push("/login");
+  };
+
   if (HIDE_ON.includes(pathname)) return null;
 
   return (
@@ -37,6 +43,9 @@ export function TopBar() {
         <Link href="/settings" className="p-1 text-muted-foreground">
           <Settings size={22} />
         </Link>
+        <button onClick={handleLogout} className="p-1 text-muted-foreground">
+          <LogOut size={22} />
+        </button>
       </div>
     </header>
   );

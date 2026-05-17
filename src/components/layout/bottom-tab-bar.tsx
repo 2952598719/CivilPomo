@@ -6,7 +6,7 @@ import { Split, BookOpen } from "lucide-react";
 import { useTimerStore } from "@/stores/timer-store";
 import { useState, useEffect } from "react";
 
-const HIDE_ON = ["/settings", "/transition"];
+const HIDE_ON = ["/settings", "/transition", "/login"];
 
 const MINI_R = 34;
 const MINI_STROKE = 3.5;
