@@ -1,8 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useTimerStore } from "@/stores/timer-store";
 import { Button } from "@/components/ui/button";
+
+const SOUNDS = {
+  complete: new Audio("/sounds/番茄完成音.mp3"),
+  start: new Audio("/sounds/开始专注音.mp3"),
+};
+
+function playSound(key: keyof typeof SOUNDS) {
+  const audio = SOUNDS[key];
+  audio.currentTime = 0;
+  audio.play().catch(() => {});
+}
 
 function formatTime(seconds: number): string {
   const m = Math.floor(seconds / 60);
@@ -44,7 +55,22 @@ export function PomodoroTimer({ onStart, canStart = true }: PomodoroTimerProps) 
     completeBreak,
   } = useTimerStore();
 
-  const handleStart = () => { start(); onStart?.(); };
+  const prevPhaseRef = useRef(phase);
+
+  useEffect(() => {
+    const prev = prevPhaseRef.current;
+    prevPhaseRef.current = phase;
+    // Work complete → entering break
+    if ((prev === "running" || prev === "paused") && phase === "break") {
+      playSound("complete");
+    }
+    // Break complete → back to idle
+    if (prev === "break" && phase === "idle") {
+      playSound("complete");
+    }
+  }, [phase]);
+
+  const handleStart = () => { start(); onStart?.(); playSound("start"); };
 
   const totalSeconds =
     phase === "break"
