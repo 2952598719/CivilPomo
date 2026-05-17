@@ -4,13 +4,20 @@ import { useEffect, useState, useRef } from "react";
 import { useTimerStore } from "@/stores/timer-store";
 import { Button } from "@/components/ui/button";
 
-const SOUNDS = {
-  complete: new Audio("/sounds/番茄完成音.mp3"),
-  start: new Audio("/sounds/开始专注音.mp3"),
-};
+let sounds: Record<string, HTMLAudioElement> | null = null;
 
-function playSound(key: keyof typeof SOUNDS) {
-  const audio = SOUNDS[key];
+function getSounds() {
+  if (!sounds) {
+    sounds = {
+      complete: new Audio("/sounds/番茄完成音.mp3"),
+      start: new Audio("/sounds/开始专注音.mp3"),
+    };
+  }
+  return sounds;
+}
+
+function playSound(key: string) {
+  const audio = getSounds()[key];
   audio.currentTime = 0;
   audio.play().catch(() => {});
 }
